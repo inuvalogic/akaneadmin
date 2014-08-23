@@ -1,0 +1,3 @@
+<?php if (!defined('_INC')) { die('404 Not Found'); } ?>
+<?php $web->admin(); ?>
+Welcome...

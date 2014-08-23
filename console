@@ -14,7 +14,7 @@ $database_config = array
 	'dbHost' => "localhost",
 	'dbUser' => "root",
 	'dbPass' => "",
-	'dbname' => "sms"
+	'dbname' => "ichigo_distro"
 );
 
 include "system/cli/gen.php";

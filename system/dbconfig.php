@@ -6,7 +6,7 @@ if ($_SERVER['SERVER_ADDR']=="127.0.0.1"){
 	$dbHost="localhost";
 	$dbUser="root";
 	$dbPass="";
-	$dbname="sms";
+	$dbname="ichigo_distro";
 } else {
 	$dbHost = "localhost";
 	$dbUser = "";

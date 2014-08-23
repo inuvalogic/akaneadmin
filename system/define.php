@@ -40,7 +40,7 @@ define("CONTENT",SYS_DIR."content.php");
 
 if ($_SERVER['HTTP_HOST']=='localhost')
 {
-	define('SITEPATH', '/sms/');
+	define('SITEPATH', '/akane_admin/');
 	define('SITE_ENV', 'dev');
 } else {
 	define('SITEPATH', '/');

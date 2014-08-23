@@ -85,31 +85,15 @@ if (!defined(\'_INC\')) { die(\'404 Not Found\'); }
 $web->admin();
 
 ?>
-<ul id="jsddm">
-
-	<li class="menu"><a href="<?php echo SITEURL; ?>?content=cpanel">Dashboard</a></li>
-	
 	<li class="menu"><a href="javascript:void(0);">Master</a>
 		<ul>
 '.$admin_menu.'
 		</ul>
 	</li>
-
-	<li class="menu"><a href="javascript:void(0);">Setup</a>
-		<ul>
-			<li><a href="<?php echo SITEURL; ?>?content=web_config">Config</a></li>
-			<li><a href="<?php echo SITEURL; ?>?content=change_password">Change Password</a></li>
-		</ul>
-	</li>
-	
-	<li class="menu"><a href="<?php echo SITEURL; ?>?content=logout">Logout</a></li>
-
-</ul>
-
 ';
 
 		$model_path = 'contents/page/';
-		Akane_Generate::writefile($model_path, 'admin_menu.php', $formatted_content);
+		Akane_Generate::writefile($model_path, 'admin_menu_master.php', $formatted_content);
 	}
 	public function create_admin($tabelname, $columns, $primary_keys){
 		
