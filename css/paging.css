@@ -1,0 +1,20 @@
+/* PAGINATION */
+.paginator {
+}
+.paginator span {
+	padding: 3px 5px;
+	margin-right: 3px;
+}
+.paginator .page-info { margin-top:10px; padding:5px; }
+.paginator .page-list { margin-top:10px; padding:5px; }
+.paginator .page-list a { text-decoration:none; }
+.paginator .page-list a.page-record span:hover,
+.paginator .page-list a.page-next span:hover,
+.paginator .page-list a.page-prev span:hover,
+.paginator .page-list span.page-current {
+	background:#1c1c1d;
+	color:#FFFFFF;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}

@@ -1,0 +1,48 @@
+#!/usr/bin/env php
+<?php
+
+ini_set('display_errors', 1);
+
+define('_INC' ,1);
+
+/*
+ * Database Config
+ */
+
+$database_config = array
+(
+	'dbHost' => "localhost",
+	'dbUser' => "root",
+	'dbPass' => "",
+	'dbname' => "sms"
+);
+
+include "system/cli/gen.php";
+include "system/cli/cli.php";
+
+if ( isset($_SERVER['argv'][1]) ) {
+	if ( !empty($_SERVER['argv'][1]) ){
+		
+		$param = $_SERVER['argv'][1];
+
+		switch ($param) {
+			case 'generate:admin':
+			case 'gen:adm':
+				echo $cli->generate_admin();
+				break;
+			case '--version':
+			case '-v':
+				echo $cli->version;
+				break;
+			case '--help':
+			case '-h':
+			default:
+				echo $cli->show_help();
+				break;
+		}
+	} else {
+		echo $cli->show_help();
+	}
+} else {
+	echo $cli->show_help();
+}

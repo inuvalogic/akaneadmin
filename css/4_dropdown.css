@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* CSS Document */
+
+#jsddm
+{	margin: 0;
+	padding: 0}
+
+	#jsddm li
+	{	float: left;
+		list-style: none;
+		font: 12px Tahoma, Arial}
+
+	#jsddm li a
+	{	display: block;
+		text-decoration: none;
+		white-space: nowrap;
+		padding:5px 20px;
+		border-right:#4b4b4b solid 1px;
+		background:#1c1c1c; color:#FFF;
+	}
+
+	#jsddm li a:hover
+	{ background:#4b4b4b; color:#FFF; }
+		
+		#jsddm li ul
+		{	margin: 0;
+			padding: 0;
+			position: absolute;
+			z-index:10000;
+			visibility: hidden;
+			border-top: 1px solid white}
+		
+			#jsddm li ul li
+			{	float: none;
+				display: inline;
+				text-align:left;
+				}
+			
+			#jsddm li ul li a
+			{	width: auto;
+				background: #1c1c1d;
+				padding: 5px 12px;
+				color: #FFF}
+			
+			#jsddm li ul li a:hover
+			{	background: #4b4b4b}
