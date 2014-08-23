@@ -129,6 +129,7 @@ $web->admin();
 
 				$form_param = array();
 				$form_parameter = '';
+				$form_type = 'text';
 
 				$label = str_replace('_', ' ', $col['name']);
 				$label = ucwords($label);
@@ -165,8 +166,6 @@ $web->admin();
 					$not_empty_array[] = sprintf($not_empty_string, $col['name']);
 					$form_param[] = $required_format;
 				}
-				
-				$form_type = 'text';
 
 				if ($col['external']!=false){
 					$form_type = 'relation';
