@@ -6,7 +6,7 @@ if ($_SERVER['SERVER_ADDR']=="127.0.0.1"){
 	$dbHost="localhost";
 	$dbUser="root";
 	$dbPass="";
-	$dbname="ichigo_distro";
+	$dbname="akane_admin";
 } else {
 	$dbHost = "localhost";
 	$dbUser = "";

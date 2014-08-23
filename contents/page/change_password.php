@@ -1,6 +1,7 @@
-<?php if (!defined('_INC')) { die('404 Not Found'); } ?>
-<?php $web->admin(); ?>
 <?php
+if (!defined('_INC')) { die('404 Not Found'); }
+$web->admin();
+$web->set_heading(MENU_PASS);
 
 	$id = $_SESSION['logid'];
 	

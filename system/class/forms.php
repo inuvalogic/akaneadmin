@@ -197,7 +197,12 @@ class forms {
 	public function input_text($name,$value=false,$param=false){
 		$values = '';
 		$params = '';
-		
+		$type = 'text';
+
+		if ($name=='password'){
+			$type = 'password';
+		}
+
 		if ($value!=false){
 			$values = ' value="'.$value.'"';
 		}
@@ -212,7 +217,7 @@ class forms {
 			}
 		}
 		
-		$input = '<input type="text" name="'.$name.'"'.$values.$params.' />';
+		$input = '<input type="'.$type.'" name="'.$name.'"'.$values.$params.' />';
 		return $input;
 	}
 	

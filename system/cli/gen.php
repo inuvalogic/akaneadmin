@@ -99,6 +99,11 @@ $web->admin();
 		
 		// print_r($columns);
 		
+		$autotime = '';
+		$autotime_format = '$_POST[\'%s\'] = \'NOW()\';';
+
+		$autotime_column = array('create_date', 'created_date', 'created_at', 'post_date', 'postdate', 'posted_at', 'update_date', 'updated_at');
+
 		$not_empty_start = '';
 		$not_empty_end = '';
 		$not_empty_string = '!empty($_POST[\'%s\'])';
@@ -117,6 +122,7 @@ $web->admin();
 		$table_row = array();
 		$table_row_format = '<td class="tabel-content"><?php echo $data[\'%s\']; ?></td>';
 
+
 		foreach ($columns as $col_keys => $col) {
 			
 			if (!$col['primary']) {
@@ -124,21 +130,10 @@ $web->admin();
 				$form_param = array();
 				$form_parameter = '';
 
-				if (!$col['nullable']){
-					$not_empty_array[] = sprintf($not_empty_string, $col['name']);
-					$form_param[] = $required_format;
-				}
-				
-				$form_type = 'text';
-
-				if ($col['external']!=false){
-					$form_type = 'relation';
-					$form_param[] = '\'table\' => \''.$col['external'].'\'';
-					$form_param[] = '\'primary_column\' => \'id\'';
-					$form_param[] = '\'display_column\' => \'name\'';
-					$form_add .= "\t\t\t\t# Change primary_column and display_column to your need\n";
-					$form_edit .= "\t\t\t\t# Change primary_column and display_column to your need\n";
-				}
+				$label = str_replace('_', ' ', $col['name']);
+				$label = ucwords($label);
+				$table_head[] = "\t\t\t\t\t".sprintf($table_head_format,$label);
+				$table_row[] = "\t\t\t\t\t\t".sprintf($table_row_format,$col['name']);
 
 				if ($col['type']=='text'){
 					$form_type = 'textarea';
@@ -160,8 +155,28 @@ $web->admin();
 					}
 				} else if ($col['type']=='date' || $col['type']=='datetime'){
 					$form_param[] = '\'params\' => array(\'class\' => \'datepicker\')';
+					if (in_array($col['name'], $autotime_column)===true){
+						$autotime .= "\t\t\t\t\t".sprintf($autotime_format, $col['name'])."\n";
+						continue;
+					}
+				}
+
+				if (!$col['nullable']){
+					$not_empty_array[] = sprintf($not_empty_string, $col['name']);
+					$form_param[] = $required_format;
 				}
 				
+				$form_type = 'text';
+
+				if ($col['external']!=false){
+					$form_type = 'relation';
+					$form_param[] = '\'table\' => \''.$col['external'].'\'';
+					$form_param[] = '\'primary_column\' => \'id\'';
+					$form_param[] = '\'display_column\' => \'name\'';
+					$form_add .= "\t\t\t\t# Change primary_column and display_column to your need\n";
+					$form_edit .= "\t\t\t\t# Change primary_column and display_column to your need\n";
+				}
+
 				if (count($form_param)!=0){
 					$form_params = implode(', ', $form_param);
 					$form_parameter = ', array('.$form_params.')';
@@ -177,10 +192,6 @@ $web->admin();
 
 				$form_edit .= "\t\t\t\t".'->add(\''.$col['name'].'\', \''.$form_type.'\''.$form_parameter.')'."\n";
 
-				$label = str_replace('_', ' ', $col['name']);
-				$label = ucwords($label);
-				$table_head[] = "\t\t\t\t\t".sprintf($table_head_format,$label);
-				$table_row[] = "\t\t\t\t\t\t".sprintf($table_row_format,$col['name']);
 			}
 		}
 
@@ -232,7 +243,7 @@ if ( (isset($_GET[\'action\'])) && (!empty($_GET[\'action\'])) )
 					unset($_POST[\'ppost\']);
 					$_POST[\'action\'] = \'insert\';
 					$_POST[\'table\'] = \'%tabelname%\';
-					$_POST[\'create_date\'] = \'NOW()\';
+'.$autotime.'
 					$web->db->auto_save();
 					$web->gotopage(THISFILE);
 				'.$not_empty_end.'

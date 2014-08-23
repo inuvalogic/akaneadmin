@@ -1,5 +1,6 @@
 <?php
 
+$langmenu['MENU_CONFIG'] = 'Web Config';
 $langmenu['MENU_CONFIG_DESC'] = 'Config Name';
 $langmenu['MENU_CONFIG_VALUE'] = 'Config Value';
 $langmenu['MENU_CONFIG_EDIT'] = 'Change Value';
@@ -19,7 +20,7 @@ $langmenu['MENU_NAME'] = 'Nama';
 
 $langmenu['MENU_HOME'] = 'Dashboard';
 $langmenu['MENU_PASS'] = 'Change Password';
-$langmenu['MENU_SETUP'] = 'Options';
+$langmenu['MENU_SETUP'] = 'Setup';
 
 $langmenu['MENU_PAGE_NULL'] = 'No Data';
 $langmenu['MENU_INFO_NEXT'] = 'Next';

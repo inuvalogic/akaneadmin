@@ -34,7 +34,7 @@ var pathToPhp = "'.SITEPATH.'tiny_mce/tinyupload.php";
 			content_css : "'.SITEURL.'tiny_mce/tinymce.css"
 		});
 		$(\'.confirm_delete\').click(function(){
-			var answer = confirm(\'Are you sure to delete "\'+jQuery(this).attr(\'title\')+\'"\');
+			var answer = confirm(\'Are you sure to delete \'+jQuery(this).attr(\'title\')+\' ?\');
 			return answer;
 		}); 
 		$(\'.color_picker\').ColorPicker({

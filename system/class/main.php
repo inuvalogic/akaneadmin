@@ -2,7 +2,7 @@
 
 class WebSite
 {
-	var $template_use,$lang,$page;
+	var $template_use,$lang,$page,$heading_title;
 	
 	private static $instance;
 
@@ -1000,6 +1000,14 @@ class WebSite
 		}
 		$output = array("output" => $show_page, "limit" => $limit);
 		return $output;
+	}
+
+	function set_heading($title){
+		$this->heading_title = $title;
+	}
+
+	function get_heading($title){
+		return $this->heading_title;
 	}
 }
 

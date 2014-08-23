@@ -1,5 +1,8 @@
-<?php $web->admin(); ?>
 <?php
+if (!defined('_INC')) { die('404 Not Found'); }
+$web->admin();
+$web->set_heading(MENU_CONFIG);
+
 if ( (isset($_GET['action'])) && (!empty($_GET['action'])) )
 {
 	$action = $_GET['action'];
