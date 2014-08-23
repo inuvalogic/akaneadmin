@@ -1,0 +1,727 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"auto",
+				"autotime"
+			],
+			[
+				"arra_key",
+				"array_key_exists"
+			],
+			[
+				"sp",
+				"sprintf"
+			],
+			[
+				"head",
+				"heading_title"
+			],
+			[
+				"enum",
+				"enum_array"
+			],
+			[
+				"en",
+				"enum_data"
+			],
+			[
+				"format",
+				"format_menu"
+			],
+			[
+				"Akan",
+				"Akane_Generate"
+			],
+			[
+				"admin",
+				"admin_file"
+			],
+			[
+				"table",
+				"table_rows"
+			],
+			[
+				"table_r",
+				"table_rows"
+			],
+			[
+				"not_em",
+				"not_empty"
+			],
+			[
+				"not",
+				"not_empty_array"
+			],
+			[
+				"con",
+				"content"
+			],
+			[
+				"getCreateTables",
+				"getCreateTablesResult"
+			],
+			[
+				"get",
+				"getCreateTablesQuery"
+			],
+			[
+				"array_key",
+				"array_key_exists"
+			],
+			[
+				"db",
+				"dbTable"
+			],
+			[
+				"strre",
+				"str_repeat"
+			],
+			[
+				"prin",
+				"print_r"
+			],
+			[
+				"preg_match",
+				"preg_match_all"
+			],
+			[
+				"for",
+				"foreach	foreach …"
+			],
+			[
+				"crea",
+				"create_table"
+			],
+			[
+				"ge",
+				"getTablesResult"
+			],
+			[
+				"ini",
+				"ini_set"
+			],
+			[
+				"back",
+				"backbone"
+			],
+			[
+				"id_bi",
+				"id_billing_period"
+			],
+			[
+				"NO",
+				"NOT"
+			],
+			[
+				"id",
+				"idOrder"
+			],
+			[
+				"CustomerG",
+				"CustomerGroup"
+			],
+			[
+				"Invoic",
+				"InvoiceItem"
+			],
+			[
+				"inv",
+				"invoiceItem"
+			],
+			[
+				"invoiceItem",
+				"invoiceItems"
+			],
+			[
+				"ck",
+				"ckeditor_toolbar_icons"
+			],
+			[
+				"doma",
+				"domaintld"
+			],
+			[
+				"dom",
+				"domainname"
+			],
+			[
+				"date",
+				"datepicker"
+			],
+			[
+				"S",
+				"Sonata"
+			],
+			[
+				"A",
+				"Application"
+			],
+			[
+				"custom",
+				"customer_status"
+			],
+			[
+				"pricemt",
+				"pricemethod"
+			],
+			[
+				"getF",
+				"getFirstName"
+			],
+			[
+				"price",
+				"priceMethod"
+			],
+			[
+				"pricem",
+				"pricemethod"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"App",
+				"ApplicationSonataUserBundle"
+			],
+			[
+				"Wi",
+				"WisnuTestBundle"
+			],
+			[
+				"pas",
+				"parseFloat"
+			],
+			[
+				"dy",
+				"dynamic_shipping"
+			],
+			[
+				"em",
+				"employeeName"
+			],
+			[
+				"user",
+				"user_id"
+			],
+			[
+				"use",
+				"user_id"
+			],
+			[
+				"sess",
+				"Session"
+			],
+			[
+				"n",
+				"namespace"
+			],
+			[
+				"Edit",
+				"edit_history"
+			],
+			[
+				"tra",
+				"transaction"
+			],
+			[
+				"In",
+				"Information"
+			],
+			[
+				"ele",
+				"element"
+			],
+			[
+				"app",
+				"application"
+			],
+			[
+				"ap",
+				"appendChild"
+			],
+			[
+				"re",
+				"require"
+			],
+			[
+				"wisnu",
+				"wisnuhafid"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 327.0,
+		"selected_items":
+		[
+			[
+				"tw",
+				"Snippet: Symfony2 / Twig / Template / Form"
+			],
+			[
+				"twi",
+				"Set Syntax: HTML (Twig)"
+			],
+			[
+				"Snippet: symfony fo",
+				"Snippet: Symfony2 / Controller / Form Type"
+			],
+			[
+				"Snippet: symfony",
+				"Snippet: Symfony2 / Controller / Form Type"
+			],
+			[
+				"symfony add",
+				"Snippet: Symfony2 / Command / Command class"
+			],
+			[
+				"orm",
+				"Snippet: Symfony2 / Model / String column doc"
+			],
+			[
+				"many",
+				"Snippet: Symfony2 / Model / ManyToOne column doc"
+			],
+			[
+				"symf",
+				"Snippet: Symfony2 / Model / ManyToOne column doc"
+			],
+			[
+				"Snippet: add",
+				"Snippet: Symfony2 / Command / Command class"
+			],
+			[
+				"pa",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 575.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Volumes/DATA/htdocs/akane_admin/system/cli/gen.php",
+		"/Volumes/DATA/htdocs/akane_admin/system/class/forms.php",
+		"/Volumes/DATA/htdocs/akane_admin/contents/page/admin.php",
+		"/Volumes/DATA/htdocs/akane_admin/system/custom.php",
+		"/Volumes/DATA/htdocs/akane_admin/contents/page/admin_menu_master.php",
+		"/Volumes/DATA/htdocs/akane_admin/contents/page/content.php",
+		"/Volumes/DATA/htdocs/akane_admin/system/content.php",
+		"/Volumes/DATA/htdocs/akane_admin/system/dbconfig.php",
+		"/Volumes/DATA/htdocs/akane_admin/system/class/main.php",
+		"/Volumes/DATA/htdocs/akane_admin/contents/page/cpanel.php",
+		"/Volumes/DATA/htdocs/akane_admin/contents/page/change_password.php",
+		"/Volumes/DATA/htdocs/akane_admin/contents/page/web_config.php",
+		"/Volumes/DATA/htdocs/akane_admin/contents/page/admin_menu.php",
+		"/Volumes/DATA/htdocs/akane_admin/console",
+		"/Volumes/DATA/htdocs/akane_admin/lang/indonesia/lang-menu.php",
+		"/Volumes/DATA/htdocs/akane_admin/system/define.php",
+		"/Volumes/DATA/htdocs/sms/system/cli/gen.php",
+		"/Volumes/DATA/htdocs/sms/contents/page/data_harga.php",
+		"/Volumes/DATA/htdocs/sms/system/cli/cli.php",
+		"/Volumes/DATA/htdocs/sms/system/cli/color.php",
+		"/Volumes/DATA/htdocs/sms/contents/page/transaksi.php",
+		"/Volumes/DATA/htdocs/sms/index.php",
+		"/Volumes/DATA/htdocs/sms/system/class/forms.php",
+		"/Volumes/DATA/htdocs/sms/contents/page/inbox.php",
+		"/Volumes/DATA/htdocs/sms/contents/page/phones.php",
+		"/Volumes/DATA/htdocs/sms/contents/page/sentitems.php",
+		"/Volumes/DATA/htdocs/sms/system/class/class.mysql.php",
+		"/Volumes/DATA/htdocs/sms/contents/page/admin_menu.php",
+		"/Volumes/DATA/htdocs/sms/system/content.php",
+		"/Volumes/DATA/htdocs/sms/contents/page/pegawai.php",
+		"/Volumes/DATA/htdocs/sms/system/define.php",
+		"/Volumes/DATA/htdocs/admingenerator/web/controllers/base2.php",
+		"/Volumes/DATA/htdocs/admingenerator/web/controllers/base.php",
+		"/Volumes/DATA/htdocs/admingenerator/web/views/menu.html.twig",
+		"/Volumes/DATA/htdocs/inu2/composer.json",
+		"/Volumes/DATA/htdocs/admingenerator/src/app.php",
+		"/Volumes/DATA/htdocs/admingenerator/web/controllers/top_level_domain/index.php",
+		"/Volumes/DATA/htdocs/inu2/templates/index.html",
+		"/Volumes/DATA/htdocs/inu2/public/index.php",
+		"/Volumes/DATA/htdocs/inu/composer.json",
+		"/Volumes/DATA/htdocs/inu/web/index.php",
+		"/Volumes/DATA/htdocs/inu2/templates/form.html",
+		"/Volumes/DATA/htdocs/inu/web/.htaccess",
+		"/Volumes/DATA/htdocs/inu/.htaccess",
+		"/Volumes/DATA/htdocs/slimframework/public/index.php",
+		"/Volumes/DATA/htdocs/slimframework_composer/index.php",
+		"/Volumes/DATA/htdocs/slimframework_composer/composer.json",
+		"/Volumes/DATA/htdocs/backbone/backbone.php",
+		"/Volumes/DATA/htdocs/backbone/05 - ajax.html",
+		"/Volumes/DATA/htdocs/backbone/04 - collection.html",
+		"/Volumes/DATA/htdocs/backbone/02 - view.html",
+		"/Volumes/DATA/htdocs/backbone/jquery-1.7.2-min.js",
+		"/Volumes/DATA/htdocs/backbone/03 - routers.html",
+		"/Volumes/DATA/htdocs/cbn-billing/app/config/config.yml",
+		"/Volumes/DATA/htdocs/cbn-billing/sql/002_cbn_billing_update.sql",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Entity/User.php",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Resources/config/doctrine/User.orm.xml",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Entity/Currency.php",
+		"/Volumes/DATA/htdocs/cbn-billing/vendor/sonata-project/user-bundle/Resources/views/Admin/Security/login.html.twig",
+		"/Volumes/DATA/htdocs/cbn-billing/composer.json",
+		"/Volumes/DATA/htdocs/cbn-billing/app/AppKernel.php",
+		"/Volumes/DATA/htdocs/cbn-billing/vendor/autoload.php",
+		"/Volumes/DATA/htdocs/cbn-billing/vendor/composer/autoload_real.php",
+		"/Volumes/DATA/htdocs/cbn-billing/vendor/gedmo/doctrine-extensions/lib/Gedmo/Loggable/Entity/LogEntry.php",
+		"/Volumes/DATA/htdocs/cbn-billing/app/config/parameters.yml",
+		"/Volumes/DATA/htdocs/cbn-billing/vendor/composer/installed.json",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Resources/config/doctrine/Currency.orm.xml",
+		"/Volumes/DATA/htdocs/cbn-billing/vendor/sonata-project/admin-bundle/Admin/Admin.php",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Resources/config/doctrine/Invoice.orm.xml",
+		"/Volumes/DATA/htdocs/cbn-billing/sql/002_cbn_billing_master.sql",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Resources/config/doctrine/gen/User.orm.xml",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Resources/config/doctrine/gen/Currency.orm.xml",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Resources/config/doctrine/backup/User.orm.xml",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Resources/config/doctrine/backup/Currency.orm.xml",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Entity/backup/User.php",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Resources/config/doctrine/Role.orm.xml",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Resources/config/doctrine/Group.orm.xml",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Resources/config/doctrine/Order.orm.xml",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Admin/OrderAdmin.php",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Admin/InvoiceItemAdmin.php",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Admin/InvoiceAdmin.php",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Entity/Order.php",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Entity/Invoice.php",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Entity/InvoiceItem.php",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Entity/Customer.php",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Entity/CustomerCategory.php",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Entity/CustomerGroup.php",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Entity/Group.php",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Entity/Product.php",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Entity/ProductCategory.php",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Entity/PromotionCode.php",
+		"/Volumes/DATA/htdocs/sandbox/vendor/sonata-project/ecommerce/src/ProductBundle/Model/BaseProductProvider.php",
+		"/Volumes/DATA/htdocs/sandbox/vendor/sonata-project/ecommerce/src/ProductBundle/Admin/ProductAdmin.php",
+		"/Volumes/DATA/htdocs/sandbox/vendor/sonata-project/ecommerce/src/ProductBundle/Entity/BaseProduct.php",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Resources/config/doctrine/InvoiceItem.orm.xml",
+		"/Volumes/DATA/htdocs/cbn-billing/vendor/sonata-project/user-bundle/Admin/Model/UserAdmin.php",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Admin/CustomerAdmin.php",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Admin/CustomerAdmin.php.bak2",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Admin/CustomerAdmin.php.bak",
+		"/Volumes/DATA/htdocs/symfony23/composer.json",
+		"/Volumes/DATA/htdocs/symfony23/app/AppKernel.php",
+		"/Volumes/DATA/htdocs/symfony23/app/config/config.yml",
+		"/Volumes/DATA/htdocs/symfony23/src/CBN/CBNBundle/Resources/config/routing.yml",
+		"/Volumes/DATA/htdocs/symfony23/src/CBN/CBNBundle/Entity/CustomerGroup.php",
+		"/Volumes/DATA/htdocs/symfony23/src/CBN/CBNBundle/Controller/CustomerController.php",
+		"/Volumes/DATA/htdocs/symfony23/app/config/routing.yml",
+		"/Volumes/DATA/htdocs/AdmingeneratorIpsum/composer.json",
+		"/Volumes/DATA/htdocs/symfony23/app/autoload.php",
+		"/Volumes/DATA/htdocs/cbn-billing3/composer.json",
+		"/Volumes/DATA/htdocs/sandbox/vendor/sonata-project/ecommerce/src/ProductBundle/Entity/BaseProductCategory.php",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Admin/CustomerAdmin.php.b",
+		"/Volumes/DATA/htdocs/sandbox/vendor/sonata-project/ecommerce/src/ProductBundle/Admin/ProductCategoryAdmin.php",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Resources/config/doctrine/Customer.orm.xml",
+		"/Volumes/DATA/htdocs/cbn-billing2/src/Application/Sonata/UserBundle/Entity/Customer.php",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Resources/public/js/jquery_admin.js",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Resources/views/switcher_links.html.twig",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Resources/public/css/main.css",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Resources/views/standard_layout.html.twig",
+		"/Volumes/DATA/htdocs/cbn-billing/src/Lunetics/LocaleBundle/Resources/views/Switcher/switcher_links.html.twig",
+		"/Volumes/DATA/htdocs/cbn-billing/vendor/lunetics/locale-bundle/Lunetics/LocaleBundle/Resources/views/Switcher/switcher_links.html.twig",
+		"/Volumes/DATA/htdocs/cbn-billing/src/src/Lunetics/LocaleBundle/Resources/views/Switcher/switcher_links.html.twig",
+		"/Volumes/DATA/htdocs/cbn-billing/vendor/sonata-project/admin-bundle/Resources/views/standard_layout.html.twig",
+		"/Volumes/DATA/htdocs/cbn-billing/vendor/sonata-project/formatter-bundle",
+		"/Volumes/DATA/htdocs/sonata/app/config/parameters.yml",
+		"/Volumes/DATA/htdocs/sonata/composer.json",
+		"/Volumes/DATA/htdocs/sonata/app/AppKernel.php",
+		"/Volumes/DATA/htdocs/sonata/app/config/config.yml",
+		"/Volumes/DATA/htdocs/sonata/src/Application/Sonata/UserBundle/Admin/CustomerAdmin.php"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"/Volumes/DATA/htdocs/cbn-billing/vendor",
+			"/Volumes/DATA/htdocs/cbn-billing",
+			"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Resources/config/doctrine",
+			"/Volumes/DATA/htdocs/sandbox/vendor/sonata-project/ecommerce/src/ProductBundle",
+			"/Volumes/DATA/htdocs/sandbox/vendor/sonata-project",
+			"/Volumes/DATA/htdocs/sandbox",
+			"/Volumes/DATA/htdocs/cbn-billing/",
+			"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Resources/config/doctrine",
+			"/Volumes/DATA/htdocs/cbn-billing/",
+			"/Volumes/DATA/htdocs/cbn-billing/src/Application/Sonata/UserBundle/Resources/config/doctrine",
+			"/Volumes/DATA/htdocs/cbn-billing/",
+			"/Volumes/DATA/htdocs/cbn-billing/vendor/sonata-project",
+			"/Volumes/DATA/htdocs/sonata/",
+			"/Volumes/DATA/htdocs/sonata/vendor/friendsofsymfony",
+			"/Volumes/DATA/htdocs/sonata",
+			"/Volumes/DATA/htdocs/cbn-billing",
+			"/Volumes/DATA/htdocs/cbnbill",
+			"/Volumes/DATA/htdocs/symfony",
+			"/Volumes/DATA/htdocs/symfony/vendor/doctrine/dbal/lib/Doctrine",
+			"/Volumes/DATA/htdocs/project_omlati",
+			"/Volumes/DATA/htdocs/project_omlati/",
+			"/Volumes/DATA/htdocs/project_omlati/app/views/admin/session_logs",
+			"/Volumes/DATA/htdocs/project_omlati/",
+			"/Volumes/DATA/htdocs/project_omlati",
+			"/Volumes/DATA/htdocs/project_omlati/app/",
+			"/Volumes/DATA/htdocs/project_omlati/app/assets/javascripts",
+			"/Volumes/DATA/htdocs/project_omlati",
+			"/Volumes/DATA/htdocs/project_omlati/app"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"form_ty",
+			"meta",
+			"n",
+			"'",
+			"login_check",
+			"sonata_user_admin_security_check",
+			"new_c",
+			"ext_log_entries",
+			"created_by_idx_idx39",
+			"username",
+			"  UNIQUE KEY `UNIQ_8D93D64992FC23A8` (`username_canonical`),\n  UNIQUE KEY `UNIQ_8D93D649A0D96FBF` (`email_canonical`),\n",
+			"username",
+			"status",
+			"promotion_code",
+			"<<<<<<< HEAD",
+			"symfony/icu",
+			"\"name\": \"stof/doctrine-extensions-bundle\"",
+			"slugg",
+			">>>",
+			"You are not allowed to access this file. Check app_dev.php for more information",
+			"id_company_idx",
+			"billing_period",
+			"product_bu",
+			"tax",
+			"country",
+			"countr",
+			"flag_taxable",
+			"preper",
+			"created_by_idx_idx36",
+			"created_by_idx_idx35",
+			"flag",
+			"fk_customer_status_idx",
+			"fk_customer_status_idx2",
+			"customer_status",
+			"id_currency",
+			"  ``\nid_currency",
+			"id_currency",
+			"notes",
+			"fk_customer_status_idx",
+			"customer_status",
+			"id_company_idx",
+			"id_company_idx_idx",
+			"`user`",
+			"`updated_at` datetime DEFAULT NULL",
+			"`created_at` datetime DEFAULT NULL",
+			"update_at",
+			"created_by",
+			"`product`",
+			"product`",
+			"product",
+			"productCategories",
+			"getProductCategories",
+			"getCategory",
+			"productCategories",
+			"        <cascade-persist/>\n",
+			"category",
+			"setproductca",
+			"category",
+			"buildEditForm",
+			"baseRoutePattern",
+			"addProductCategory",
+			"category",
+			"productCategories",
+			"BaseProduct",
+			"BaseProductCategory",
+			"setCdate",
+			"getCustomerNo",
+			"cdate",
+			"groups",
+			"configureSideMenu",
+			"customer.sidemenu.link_address_list",
+			"configureSideMenu",
+			"CKEDITOR.",
+			"year",
+			"select2-drop-mask",
+			"cdate",
+			"servicetype",
+			"datetime",
+			"input type=\"datetime\"",
+			"doctrine_orm_date",
+			"datepicker.html.twig",
+			"data-date-format",
+			"group",
+			"order",
+			"crud",
+			"gender",
+			"cdate",
+			"sonata_type_model",
+			"Plain password",
+			"gly",
+			"fonts",
+			"bootstrap",
+			"glyphicon",
+			"__toString()",
+			"datetimepicker(",
+			"sonata_type_date_picker",
+			"['en",
+			"['en']",
+			"en",
+			">>>",
+			"<<",
+			">>",
+			"iduser",
+			"ORM\\JoinColumn(",
+			"referenced for relation from",
+			"Property %s does not exist",
+			"does not exist",
+			"id",
+			"cbnbill",
+			"1.8",
+			"Marvel",
+			"sonata.user.admin.user.class",
+			"sonata.user.admin.user",
+			"datagrid",
+			"\n    ",
+			"idcus",
+			"getId",
+			"id",
+			"getDatabasePlatform",
+			"may not su",
+			"may not",
+			"getDatabasePlatform",
+			"registerDoctrineTypeMapping",
+			"}",
+			"	\n",
+			"	  	\n",
+			"confirmation-shipping-notification-container",
+			"formatMoney"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"\\'",
+			"`updated_at` datetime DEFAULT '1971-01-01 00:00:00'",
+			"`created_at` datetime DEFAULT '1971-01-01 00:00:00'",
+			"updated_at",
+			"",
+			"//= require system/",
+			"<script async src=\"http://localhost:3000/assets/",
+			"<script async src=",
+			"require('",
+			"');",
+			"require('",
+			"",
+			"//= require",
+			"",
+			"//=require ./"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/Users/wisnuhafid/ichigo.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 235.0,
+	"status_bar_visible": true
+}
