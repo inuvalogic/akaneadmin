@@ -259,7 +259,15 @@
 			"file": "system/cli/gen.php",
 			"settings":
 			{
-				"buffer_size": 9342,
+				"buffer_size": 9666,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "system/cli/cli.php",
+			"settings":
+			{
+				"buffer_size": 6180,
 				"line_ending": "Unix"
 			}
 		}
@@ -669,15 +677,15 @@
 					"file": "system/cli/gen.php",
 					"settings":
 					{
-						"buffer_size": 9342,
+						"buffer_size": 9666,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								417,
-								417
+								8163,
+								8165
 							]
 						],
 						"settings":
@@ -686,7 +694,33 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 176.0,
+						"translation.y": 4482.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "system/cli/cli.php",
+					"settings":
+					{
+						"buffer_size": 6180,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1362,
+								1362
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 423.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

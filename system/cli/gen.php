@@ -41,20 +41,15 @@ class %tabelname%
 		return $this->main->db->get_data(\'%tabelname%\', \'\', "%primary_keys%=\'$%primary_keys%\'");
 	}
 	
-	function all($limit='',$keyword=''){
-		$where = '';
-		if ($keyword!=''){
+	function all($limit=\'\',$keyword=\'\'){
+		$where = \'\';
+		if ($keyword!=\'\'){
 			# please change this searchable column name to your need
 			$where = "%searchable_column% LIKE \'%$keyword%\'";
 		}
 		$data = $this->main->db->get_data(\'%tabelname%\', \'\', $where, \'\', $limit);
 		return $data;
-	}
-	function all(){
-		$data = $this->main->db->get_data(\'%tabelname%\');
-		return $data;
-	}
-	
+	}	
 }
 ';
 		$content = str_replace('%tabelname%', $tabelname, $formatted_content);
@@ -321,14 +316,14 @@ if ( (isset($_GET[\'action\'])) && (!empty($_GET[\'action\'])) )
 			$web->add_button();
 			$web->search_form();
 			
-			$keyword = '';
-			$searchlink = '';
-			if (isset($_GET['keyword'])){
-				$keyword = $_GET['keyword'];
-				$searchlink = '&keyword='.$_GET['keyword'];
+			$keyword = \'\';
+			$searchlink = \'\';
+			if (isset($_GET[\'keyword\'])){
+				$keyword = $_GET[\'keyword\'];
+				$searchlink = \'&keyword=\'.$_GET[\'keyword\'];
 			}
 			
-			$data = $web->%tabelname%->all('',$keyword);
+			$data = $web->%tabelname%->all(\'\',$keyword);
 			$jmlrec = count($data);
 			
 			if ($jmlrec>0)
