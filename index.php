@@ -34,6 +34,7 @@ $lang = array();
 
 include DBCONFIG;
 include SETTING;
+include HELPER;
 include CLASSES;
 include LANG;
 include CONTENT;

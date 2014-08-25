@@ -32,6 +32,8 @@ define("CLASS_DIR",SYS_DIR."class/");
 
 define("MODEL_DIR",SYS_DIR."model/");
 
+define("HELPER",SYS_DIR."helper.php");
+
 define("CLASSES",SYS_DIR."class/main.php");
 
 define("SETTING",SYS_DIR."setting.php");
