@@ -15,7 +15,7 @@ class Akane_Generate {
 		echo "\n";
 	}
 
-	public function create_model($tabelname, $primary_keys){
+	public function create_model($tabelname, $primary_keys, $searchable_column){
 		$formatted_content = '<?php
 /*
  *
@@ -41,6 +41,15 @@ class %tabelname%
 		return $this->main->db->get_data(\'%tabelname%\', \'\', "%primary_keys%=\'$%primary_keys%\'");
 	}
 	
+	function all($limit='',$keyword=''){
+		$where = '';
+		if ($keyword!=''){
+			# please change this searchable column name to your need
+			$where = "%searchable_column% LIKE \'%$keyword%\'";
+		}
+		$data = $this->main->db->get_data(\'%tabelname%\', \'\', $where, \'\', $limit);
+		return $data;
+	}
 	function all(){
 		$data = $this->main->db->get_data(\'%tabelname%\');
 		return $data;
@@ -50,6 +59,7 @@ class %tabelname%
 ';
 		$content = str_replace('%tabelname%', $tabelname, $formatted_content);
 		$content = str_replace('%primary_keys%', $primary_keys, $content);
+		$content = str_replace('%searchable_column%', $searchable_column, $content);
 
 		$model_path = 'system/model/';
 		Akane_Generate::writefile($model_path, $tabelname.'.php', $content);		
@@ -309,8 +319,16 @@ if ( (isset($_GET[\'action\'])) && (!empty($_GET[\'action\'])) )
 		break;
 		default:
 			$web->add_button();
+			$web->search_form();
 			
-			$data = $web->%tabelname%->all();
+			$keyword = '';
+			$searchlink = '';
+			if (isset($_GET['keyword'])){
+				$keyword = $_GET['keyword'];
+				$searchlink = '&keyword='.$_GET['keyword'];
+			}
+			
+			$data = $web->%tabelname%->all('',$keyword);
 			$jmlrec = count($data);
 			
 			if ($jmlrec>0)

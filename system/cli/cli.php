@@ -90,6 +90,8 @@ class Akane_CLI {
     		$table_name = $dbTable['name'];
     		$table_columns = array();
     		$primary_key = false;
+    		$searchable_column = false;
+    		$searchable_column_array = array('tags','title','description','post_title','content');
 
     		$primary_keys = 0;
     		$primary_keys_auto = 0;
@@ -148,6 +150,12 @@ class Akane_CLI {
 		    			$array_enum = explode(',',$string_enum);
 		    		}
 
+		    		if (in_array($column['Field'], $searchable_column_array)!==false){
+		    			$searchable_column = $column['Field'];
+		    		} else {
+		    			$searchable_column = 'id';
+		    		}
+
 	    			$table_columns[] = array(
 	    				"name" => $column['Field'],
 	    				"primary" => $column['Field'] == $primary_key ? true : false,
@@ -167,6 +175,7 @@ class Akane_CLI {
 
 			$tables[$table_name] = array(
 				"primary_key" => $primary_key,
+				"searchable_column" => $searchable_column,
 				"columns" => $table_columns
 			);
 
@@ -178,7 +187,7 @@ class Akane_CLI {
     	foreach ($tables as $key => $value) {
     		echo "\n".$key."\n";
     		echo "\tGenerating Model class ...";
-    		Akane_Generate::create_model($key, $value['primary_key']);
+    		Akane_Generate::create_model($key, $value['primary_key'], $value['searchable_column']);
     		echo "\tGenerating Admin class ...";
     		Akane_Generate::create_admin($key, $value['columns'], $value['primary_key']);
     	}
