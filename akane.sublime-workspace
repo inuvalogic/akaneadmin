@@ -255,22 +255,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "index.php",
-			"settings":
-			{
-				"buffer_size": 908,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "system/define.php",
-			"settings":
-			{
-				"buffer_size": 982,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -336,6 +320,8 @@
 	},
 	"file_history":
 	[
+		"/Volumes/DATA/htdocs/akane_admin/system/define.php",
+		"/Volumes/DATA/htdocs/akane_admin/index.php",
 		"/Volumes/DATA/htdocs/akane_admin/system/helper.php",
 		"/Volumes/DATA/htdocs/akane_admin/contents/page/admin_menu_master.php",
 		"/Volumes/DATA/htdocs/akane_admin/system/cli/gen.php",
@@ -353,7 +339,6 @@
 		"/Volumes/DATA/htdocs/akane_admin/contents/page/admin_menu.php",
 		"/Volumes/DATA/htdocs/akane_admin/console",
 		"/Volumes/DATA/htdocs/akane_admin/lang/indonesia/lang-menu.php",
-		"/Volumes/DATA/htdocs/akane_admin/system/define.php",
 		"/Volumes/DATA/htdocs/sms/system/cli/gen.php",
 		"/Volumes/DATA/htdocs/sms/contents/page/data_harga.php",
 		"/Volumes/DATA/htdocs/sms/system/cli/cli.php",
@@ -462,8 +447,7 @@
 		"/Volumes/DATA/htdocs/cbn-billing/vendor/sonata-project/admin-bundle/Resources/views/standard_layout.html.twig",
 		"/Volumes/DATA/htdocs/cbn-billing/vendor/sonata-project/formatter-bundle",
 		"/Volumes/DATA/htdocs/sonata/app/config/parameters.yml",
-		"/Volumes/DATA/htdocs/sonata/composer.json",
-		"/Volumes/DATA/htdocs/sonata/app/AppKernel.php"
+		"/Volumes/DATA/htdocs/sonata/composer.json"
 	],
 	"find":
 	{
@@ -669,63 +653,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "index.php",
-					"settings":
-					{
-						"buffer_size": 908,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								810,
-								810
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "system/define.php",
-					"settings":
-					{
-						"buffer_size": 982,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								615,
-								615
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -784,7 +713,7 @@
 		[
 			[
 				"",
-				"/Users/wisnuhafid/ichigo.sublime-project"
+				"/Users/wisnuhafid/cbn-billing.sublime-project"
 			]
 		],
 		"width": 380.0

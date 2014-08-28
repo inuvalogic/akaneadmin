@@ -4,7 +4,7 @@ class forms {
 	
 	var $forms;
 	var $forms_row;
-
+	var $form_params = array();
 	var $main;
 	
 	function __construct() {
@@ -80,6 +80,9 @@ class forms {
 					$form = 'table, primary_column, display_column option is required';
 				}
 				break;
+			case 'file':
+				$form = $this->upload_form($fieldname, $params);
+				break;
 			case 'text':
 			default:
 				$form = $this->input_text($fieldname, $value, $params);
@@ -94,14 +97,26 @@ class forms {
 		return $this;
 	}
 
-	public function buildForm($action, $option = false){
-		
-		$form_params = '';
-		if (is_array($option)){
-			if (array_key_exists('form_params', $option)){
-				$form_params = $this->get_params($option['form_params']);
+	public function add_form_params($newparams){
+		if (is_array($newparams)){
+			foreach ($newparams as $key => $value) {
+				if (array_key_exists($key, $this->form_params)==false){
+					$this->form_params[$key] = $value;
+				}
 			}
 		}
+	}
+
+	public function buildForm($action, $option = false){
+		
+		if (is_array($option)){
+			if (array_key_exists('form_params', $option)){
+				$this->add_form_params($option['form_params']);
+				
+			}
+		}
+
+		$form_params = $this->get_params($this->form_params);
 
 		$this->forms = '<form method="post"'.$form_params.'>';
 		$this->forms .= '<table border="0">';
@@ -194,6 +209,18 @@ class forms {
 		return $submit;
 	}
 	
+	public function upload_form($name,$param=false){
+		$params = '';
+		if (is_array($param)){
+			foreach($param as $c=>$d){
+				$params .= ' '.$c.'="'.$d.'"';
+			}
+		}
+		$this->add_form_params(array('enctype' => 'multipart/form-data'));
+		$input = '<input type="file" name="'.$name.'"'.$values.$params.' />';
+		return $input;
+	}
+
 	public function input_text($name,$value=false,$param=false){
 		$values = '';
 		$params = '';
@@ -232,7 +259,7 @@ class forms {
 		$select .= '<option value="">- Choose -</option>';
 		foreach($data as $k=>$v){
 			$selected = '';
-			if ($current==false){
+			if ($current!=false){
 				$current = $_POST[$name];
 			}
 			if ($current==$k){
