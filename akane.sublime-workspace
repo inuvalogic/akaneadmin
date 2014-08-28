@@ -255,6 +255,22 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "system/class/forms.php",
+			"settings":
+			{
+				"buffer_size": 7704,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "contents/page/admin.php",
+			"settings":
+			{
+				"buffer_size": 4462,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -455,7 +471,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
 			"/Volumes/DATA/htdocs/cbn-billing/vendor",
@@ -653,8 +669,63 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "system/class/forms.php",
+					"settings":
+					{
+						"buffer_size": 7704,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5927,
+								5927
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2898.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "contents/page/admin.php",
+					"settings":
+					{
+						"buffer_size": 4462,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1200,
+								1200
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 300.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -713,7 +784,7 @@
 		[
 			[
 				"",
-				"/Users/wisnuhafid/cbn-billing.sublime-project"
+				"/Users/wisnuhafid/ichigo.sublime-project"
 			]
 		],
 		"width": 380.0

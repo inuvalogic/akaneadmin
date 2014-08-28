@@ -255,14 +255,14 @@ class forms {
 				$params .= ' '.$c.'="'.$d.'"';
 			}
 		}
+		if (isset($_POST[$name])){
+			$current = $_POST[$name];
+		}
 		$select = '<select name="'.$name.'"'.$params.'>';
 		$select .= '<option value="">- Choose -</option>';
 		foreach($data as $k=>$v){
 			$selected = '';
-			if ($current!=false){
-				$current = $_POST[$name];
-			}
-			if ($current==$k){
+			if ($current!=false && $current==$k){
 				$selected = ' selected="selected"';
 			}
 			$select .= '<option value="'.$k.'"'.$selected.'>'.$v.'</option>';
