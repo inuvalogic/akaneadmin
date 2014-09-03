@@ -30,6 +30,11 @@ if ( isset($_SERVER['argv'][1]) ) {
 			case 'gen:adm':
 				echo $cli->generate_admin();
 				break;
+			case 'generate:single':
+			case 'gen:sin':
+				$tablename = $_SERVER['argv'][2];
+				echo $cli->generate_single_admin($tablename);
+				break;
 			case '--version':
 			case '-v':
 				echo $cli->version;
