@@ -20,6 +20,8 @@ $database_config = array
 include "system/cli/gen.php";
 include "system/cli/cli.php";
 
+$cli->set_db_config($database_config);
+
 if ( isset($_SERVER['argv'][1]) ) {
 	if ( !empty($_SERVER['argv'][1]) ){
 		
@@ -32,7 +34,11 @@ if ( isset($_SERVER['argv'][1]) ) {
 				break;
 			case 'generate:single':
 			case 'gen:sin':
-				$tablename = $_SERVER['argv'][2];
+				if ( isset($_SERVER['argv'][2]) ) {
+					$tablename = $_SERVER['argv'][2];
+				} else {
+					$tablename = '';
+				}
 				echo $cli->generate_single_admin($tablename);
 				break;
 			case '--version':

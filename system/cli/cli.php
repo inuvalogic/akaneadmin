@@ -5,11 +5,9 @@ class Akane_CLI {
 	public $version = "\nAkane Console Tools v.1.0.0\ncreated by Wisnu Hafid \100 19 Aug 2014\n\n";
 
 	private static $instance;
-	private static $database_config;
+	protected $database_config;
 
 	public function __construct() {
-		global $database_config;
-		$this->database_config = $database_config;
 		self::$instance = $this;
 	}
 
@@ -38,6 +36,10 @@ class Akane_CLI {
 
 		return $header.$usage.$command.$end;
 	}
+
+    public function set_db_config($database_config){
+        $this->database_config = $database_config;
+    }
 
 	public function load_db_class() {
 		include "system/class/class.mysql.php";
