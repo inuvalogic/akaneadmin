@@ -6,8 +6,10 @@ class Akane_CLI {
 
 	private static $instance;
 	protected $database_config;
+    protected $generator;
 
 	public function __construct() {
+        $this->generator = new Akane_Generate;
 		self::$instance = $this;
 	}
 
@@ -158,7 +160,7 @@ class Akane_CLI {
 		    		if (in_array($column['Field'], $searchable_column_array)!==false){
 		    			$searchable_column = $column['Field'];
 		    		} else {
-		    			$searchable_column = 'id';
+		    			$searchable_column = $dbTable['columns'];
 		    		}
 
 	    			$table_columns[] = array(
@@ -223,7 +225,7 @@ class Akane_CLI {
 			exit;
 	    }
 
-		$dbTable = array('name' => $tablename, 'columns', 'create_table');
+		$dbTable = array('name' => $tablename, 'column_name' => '', 'columns' => '', 'create_table' => '');
 		
 		$getAllTablesQuery = "SHOW TABLES";
 	    $getAllTablesResult = $this->db->query($getAllTablesQuery);
@@ -238,6 +240,7 @@ class Akane_CLI {
 
 	    while($ocdata = $this->db->fetch_array($getTableColumnsResult)){
 	    	$dbTable['columns'][] = $ocdata;
+            $dbTable['column_name'][] = $ocdata['Field'];
 	    }
 
     	$getCreateTablesQuery = "SHOW CREATE TABLE `" . $dbTable['name'] . "`";
@@ -318,7 +321,7 @@ class Akane_CLI {
 	    		if (in_array($column['Field'], $searchable_column_array)!==false){
 	    			$searchable_column = $column['Field'];
 	    		} else {
-	    			$searchable_column = 'id';
+	    			$searchable_column = $dbTable['column_name'];
 	    		}
 
     			$table_columns[] = array(
@@ -340,9 +343,9 @@ class Akane_CLI {
 
 		echo "\n".$dbTable['name']."\n";
 		echo "\tGenerating Model class ...";
-		Akane_Generate::create_model($dbTable['name'], $primary_key, $searchable_column);
+		$this->generator->create_model($dbTable['name'], $primary_key, $searchable_column);
 		echo "\tGenerating Admin class ...";
-		Akane_Generate::create_admin($dbTable['name'], $table_columns, $primary_key);
+		$this->generator->create_admin($dbTable['name'], $table_columns, $primary_key);
     	
    	}
 }

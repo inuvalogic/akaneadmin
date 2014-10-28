@@ -953,7 +953,7 @@ class WebSite
 			$paged = 1;
 		}
 		$offset=($paged-1)*$max_thread;
-		$limit = " LIMIT ".$offset.",".$max_thread;
+		$limit = $offset.",".$max_thread;
 		if ($totalpage > 1 ) {
 		   	$range_min = ($range % 2 == 0) ? ($range / 2) - 1 : ($range - 1) / 2;
 	    	$range_max = ($range % 2 == 0) ? $range_min + 1 : $range_min;

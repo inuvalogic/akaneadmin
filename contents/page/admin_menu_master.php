@@ -17,4 +17,4 @@ if (!defined('_INC')) { die('404 Not Found'); }
 $web->admin();
 
 ?>
-<li class="menu"><a href="<?php echo SITEURL; ?>?content=admin">Admin</a></li>
+<li class="menu"><a href="<?php echo SITEURL; ?>?content=article">Article</a></li>

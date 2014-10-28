@@ -16,6 +16,20 @@ class Akane_Generate {
 	}
 
 	public function create_model($tabelname, $primary_keys, $searchable_column){
+		if (is_array($searchable_column)){
+			$sc = array();
+			foreach ($searchable_column as $field){
+				$sc[] = "'".$field."'";
+			}
+			if (count($searchable_column) > 1){
+				$searchable_column_string = implode(',',$sc);
+			} else {
+				$searchable_column_string = $sc[0];
+			}
+		} else {
+			$searchable_column_string = "'".$searchable_column."'";
+		}
+
 		$formatted_content = '<?php
 /*
  *
@@ -41,11 +55,27 @@ class %tabelname%
 		return $this->main->db->get_data(\'%tabelname%\', \'\', "%primary_keys%=\'$%primary_keys%\'");
 	}
 	
+	function name($id){
+		$data = $this->main->db->get_data(\'%tabelname%\', \'\', "%primary_keys%=\'$%primary_keys%\'");
+		return $data[0][\'name\']; # change this to field that contain name
+	}
+
 	function all($limit=\'\',$keyword=\'\'){
 		$where = \'\';
 		if ($keyword!=\'\'){
 			# please change this searchable column name to your need
 			$where = "%searchable_column% LIKE \'%$keyword%\'";
+			$searchable = array('.$searchable_column_string.');
+
+			if (count($searchable) > 1){
+				$wheres = array();
+				foreach ($searchable as $field){
+					$wheres[] = $field." LIKE \'%".$keyword."%\'";
+				}
+				$where = implode(\' OR \',$wheres);
+			} else {
+				$where = $searchable[0]." LIKE \'%".$keyword."%\'";
+			}
 		}
 		$data = $this->main->db->get_data(\'%tabelname%\', \'\', $where, \'\', $limit);
 		return $data;
@@ -54,10 +84,9 @@ class %tabelname%
 ';
 		$content = str_replace('%tabelname%', $tabelname, $formatted_content);
 		$content = str_replace('%primary_keys%', $primary_keys, $content);
-		$content = str_replace('%searchable_column%', $searchable_column, $content);
 
 		$model_path = 'system/model/';
-		Akane_Generate::writefile($model_path, $tabelname.'.php', $content);		
+		$this->writefile($model_path, $tabelname.'.php', $content);
 	}
 
 	public function create_admin_menu($tables){
@@ -98,7 +127,7 @@ $web->admin();
 ';
 
 		$model_path = 'contents/page/';
-		Akane_Generate::writefile($model_path, 'admin_menu_master.php', $formatted_content);
+		$this->writefile($model_path, 'admin_menu_master.php', $formatted_content);
 	}
 	public function create_admin($tabelname, $columns, $primary_keys){
 		
@@ -326,6 +355,12 @@ if ( (isset($_GET[\'action\'])) && (!empty($_GET[\'action\'])) )
 			$data = $web->%tabelname%->all(\'\',$keyword);
 			$jmlrec = count($data);
 			
+			$url = SITEURL.\'?content=\'.THISFILE.$searchlink.\'&paged=[[paged]]\';
+            $paging = $web->pagination_seo($jmlrec, $url);
+            
+            $data = $web->%tabelname%->all($paging[\'limit\'],$keyword);
+            $jmlr = count($data);
+            
 			if ($jmlrec>0)
 			{
 				$x = 0;
@@ -349,6 +384,7 @@ if ( (isset($_GET[\'action\'])) && (!empty($_GET[\'action\'])) )
 					$x++;
 				}
 				echo \'</table>\';
+				echo $paging[\'output\'];
 			} else {
 				echo ERROR_EMPTY;
 				echo "<br /><br />";
@@ -364,6 +400,6 @@ if ( (isset($_GET[\'action\'])) && (!empty($_GET[\'action\'])) )
 		// echo str_repeat('=', 100)."\n\n\n\n";
 
 		$admin_path = 'contents/page/';
-		Akane_Generate::writefile($admin_path, $tabelname.'.php', $content);
+		$this->writefile($admin_path, $tabelname.'.php', $content);
 	}
 }
