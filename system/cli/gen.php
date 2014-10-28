@@ -64,7 +64,6 @@ class %tabelname%
 		$where = \'\';
 		if ($keyword!=\'\'){
 			# please change this searchable column name to your need
-			$where = "%searchable_column% LIKE \'%$keyword%\'";
 			$searchable = array('.$searchable_column_string.');
 
 			if (count($searchable) > 1){

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 28, 2014 at 01:57 PM
+-- Generation Time: Oct 28, 2014 at 02:31 PM
 -- Server version: 5.6.19
 -- PHP Version: 5.5.18
 
@@ -112,6 +112,56 @@ INSERT INTO `config` (`config_id`, `config_edit`, `config_name`, `config_value`,
 (77, 0, 'big_width', '600', 'Product Pic Big Width'),
 (78, 0, 'small_height', '125', 'Small Height'),
 (79, 0, 'small_width', '125', 'Small Width');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kategori`
+--
+
+CREATE TABLE IF NOT EXISTS `kategori` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `kategori`
+--
+
+INSERT INTO `kategori` (`id`, `name`) VALUES
+(1, 'test kategori');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sub_kategori`
+--
+
+CREATE TABLE IF NOT EXISTS `sub_kategori` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_kategori` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_kategori` (`id_kategori`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `sub_kategori`
+--
+
+INSERT INTO `sub_kategori` (`id`, `id_kategori`, `name`) VALUES
+(1, 1, 'test sub');
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `sub_kategori`
+--
+ALTER TABLE `sub_kategori`
+  ADD CONSTRAINT `fk_kategori` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

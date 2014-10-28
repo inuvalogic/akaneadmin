@@ -32,7 +32,6 @@ class article
 		$where = '';
 		if ($keyword!=''){
 			# please change this searchable column name to your need
-			$where = "%searchable_column% LIKE '%$keyword%'";
 			$searchable = array('id','judul','isi','tags','publish');
 
 			if (count($searchable) > 1){

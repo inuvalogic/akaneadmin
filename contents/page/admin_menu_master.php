@@ -17,4 +17,6 @@ if (!defined('_INC')) { die('404 Not Found'); }
 $web->admin();
 
 ?>
+<li class="menu"><a href="<?php echo SITEURL; ?>?content=kategori">Kategori</a></li>
+<li class="menu"><a href="<?php echo SITEURL; ?>?content=sub_kategori">Sub Kategori</a></li>
 <li class="menu"><a href="<?php echo SITEURL; ?>?content=article">Article</a></li>
