@@ -9,10 +9,16 @@ $error = array();
 include $language."/lang-error.php";
 
 $error_key = array_keys($error);
+
+$error_format = '<div class="alert alert-danger alert-dismissable">
+    <i class="fa fa-ban"></i>
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    %s
+</div>';
+
 foreach($error_key as $key)
 {
-	$defines = 'define("'.$key.'","<div id=\'warning\'>".$error[\''.$key.'\']."</div>");';
-	eval($defines);
+    define($key, sprintf($error_format, $error[$key]));
 }
 
 $langmenu = array();

@@ -1,0 +1,71 @@
+/*  Skin Tekno Asia
+----------------------- */
+
+/* navbar */
+.skin-blue .navbar {
+    background-color: #96D44E;
+}
+.skin-blue .navbar .nav a {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* logo */
+.skin-blue .logo {
+    background-color: #7EA735;
+    color: #f9f9f9;
+}
+.skin-blue .logo > a {
+    color: #f9f9f9;
+}
+.skin-blue .logo:hover {
+    background: #8DBB3C;
+}
+
+/* form & button */
+.btn.btn-primary {
+    background-color: #7EA735;
+    border-color: #8DBB3C;
+}
+.btn.btn-primary:hover,
+.btn.btn-primary:active,
+.btn.btn-primary.hover {
+    background-color: #8DBB3C;
+}
+.form-control:focus {
+    border-color: #8DBB3C !important;
+}
+.btn.btn-info {
+  background-color: #7EA735;
+  border-color: #8DBB3C;
+}
+.btn.btn-info:hover,
+.btn.btn-info:active,
+.btn.btn-info.hover {
+  background-color: #8DBB3C;
+}
+
+.form-group a, a.backlink {
+    color: #8DBB3C;
+}
+.form-group a:hover, a.backlink:hover {
+    color: #7EA735;
+}
+.form-group .help {
+    font-style: italic;
+}
+.table-hover > tbody > tr:hover {
+    background-color: #EEEEEE;
+}
+
+.list-top-bar {
+    margin-bottom: 20px;
+}
+
+.required {
+    color: #FF0000;
+    display: inline-block;
+    padding-left: 5px;
+}
+.required:before {
+    content:"*";
+}

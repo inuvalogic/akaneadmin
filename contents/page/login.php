@@ -1,7 +1,7 @@
 <?php if (!defined('_INC')) { die('404 Not Found'); } ?>
 <?php
 
-if( (isset($_SESSION['logid'])) && $_SESSION['level']==1 )
+if (isset($_SESSION['logid']))
 {
 	$web->gotopage('cpanel');
 }
@@ -12,7 +12,7 @@ $error = array(
 	'pass' => ''
 );
 
-if ( (isset($_GET["action"])) && ($_GET["action"] == "login") ) {
+if ( (isset($_POST["submit"])) ) {
 	$username=strip_tags($_POST["username"]);
 	$password=strip_tags($_POST["password"]);
 	if (empty($username)) {
@@ -21,52 +21,59 @@ if ( (isset($_GET["action"])) && ($_GET["action"] == "login") ) {
 	if (empty($password)) {
 		$error['pass'] = ERROR_PASS_NULL;
 	}
-	if ( (!empty($username)) && (!empty($password))){
-		$countlog =0;
-		$password=md5($password);
-		$queryceklog="select id,username,level,nama,status from admin where username='$username' and password='$password' and level=1";
-		$resultlog=mysql_query($queryceklog) or die(ERROR_DB);
-		$countlog=mysql_num_rows($resultlog);
-		if ($countlog==1) {
-			$user=mysql_fetch_array($resultlog);
-			if ($user['status']==2)
+	if ( (!empty($username)) && (!empty($password)))
+    {
+        load_model('admin');
+        
+        $password = $web->encrypt_password($password);
+        $check = $web->admin->login($username, $password);
+
+		if ($check!=NULL) {
+			$user = $check[0];
+			if ($user['status']=='active')
 			{
-				$error['users'] = ERROR_USER_NO_ACTIVE.'<br />';
-			} else {
 				$_SESSION["logid"]=$user['id'];
 				$_SESSION["username"]=$user['username'];
+                $_SESSION["name"]=$user['name'];
 				$_SESSION["level"]=$user['level'];
-				$_SESSION["name"]=$user['nama'];
 				if ( (isset($_GET['next'])) && (!empty($_GET['next'])) )
 				{
 					$web->gotopage($_GET['next']);
 				} else {
 					$web->gotopage('cpanel');
 				}
+            } else {
+                $error['users'] = ERROR_USER_NO_ACTIVE;
 			}
-			mysql_free_result($resultlog);
 		} else {
-			$error['users'] = ERROR_PASS_WRONG.'<br />';
+			$error['users'] = ERROR_PASS_WRONG;
 		}
+        
 	}
 }
+
 ?>
-
-<div id="login-page">
-	<div id="login-page-head" class="corner-top">Administrator <?php echo MENU_LOGIN; ?></div>
-	<div id="login-page-content" class="corner-bottom">
-	
-	<div id="loginform">
-	<?php echo $error['users']; ?>
-		<form action="?content=login&action=login" method="post">
-		<label for="uname">Username</label><br />
-		<input class="input-text-login" type="text" name="username" value="<?php echo $error['user']; ?>" /><br /><br />
-		<label for="pword">Password</label><br />
-		<input class="input-text-login" type="password" name="password" value="<?php echo $error['pass']; ?>" /><br /><br />
-		<input class="input-button" type="submit" name="Submit" value="Login" /><br />
-		</form>
-	</div>
-	</div>
+<link href="css/signin.css" rel="stylesheet" type="text/css" />
+<div class="form-box" id="login-box">
+    <div class="header"><img src="images/logo.png"></div>
+    <form action="?content=login&action=login" method="post">
+        <div class="body bg-gray">
+            <?php echo $error['users']; ?>
+            <div class="form-group">
+                <input type="text" name="username" class="form-control" placeholder="Username"/>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" class="form-control" placeholder="Password"/>
+            </div>          
+        </div>
+        <div class="footer">                                                               
+            <button type="submit" name="submit" value="submit" class="btn bg-olive btn-block">Sign in</button>
+        </div>
+    </form>
+    
 </div>
-
-
+<script type="text/javascript">
+	$(function(){
+		$('body').addClass('bg-black');
+	});
+</script>
