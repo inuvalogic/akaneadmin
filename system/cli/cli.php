@@ -2,7 +2,7 @@
 
 class Akane_CLI {
 
-	public $version = "\nAkane Console Tools v.1.0.0\ncreated by Wisnu Hafid \100 19 Aug 2014\n\n";
+	public $version = "\nAkane Console Tools\ncreated by Wisnu Hafid \100 19 Aug 2014\n\nLatest version: 1.1\nLatest update: 16 Jun 2017\n\n";
 
 	private static $instance;
 	protected $database_config;
@@ -18,7 +18,7 @@ class Akane_CLI {
 	}
 	
 	public function show_help(){
-		$header = "\n".str_repeat('#', 100)."\n\n\033[1;34mAkane Console Tools\033[0m\n".str_repeat('_', 100)."\n\n";
+		$header = "\n".str_repeat('#', 100)."\n\n\033[1;34mAkane Console Tools\033[0m\n\nLatest version: 1.1\nLatest update: 16 Jun 2017\n".str_repeat('_', 100)."\n\n";
 		
 		$usage = "\033[1;33mUsage:\033[0m\n\n\tphp console [command]\n\n";
 		

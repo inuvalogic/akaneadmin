@@ -14,10 +14,10 @@ ___
 
 ### Instalasi
 
-1. clone repo dari Github ke htdocs ( [https://github.com/inuvalogic/akaneadmin](https://github.com/inuvalogic/akaneadmin) )
+1. clone / download repo dari Github ke htdocs ( [https://github.com/inuvalogic/akaneadmin](https://github.com/inuvalogic/akaneadmin) )
 2. buat database baru dengan nama `akane_admin`
 3. import db.sql ke database tadi
-4. akses http://localhost/akaneadmin
+4. akses http://localhost/akaneadmin/
 5. login dengan user & password berikut:
 
 ```sh
@@ -25,9 +25,11 @@ username: admin
 password: admin
 ```
 
-### Akane Console
+### Akane Console Tools
 
-untuk mengakses Akane console ketikan perintah berikut pada console/ command prompt/ cmd, pastikan PHP CLI terinstall dengan benar.
+![alt text](https://github.com/inuvalogic/akaneadmin/raw/master/preview/console.png "akane console tools")
+
+untuk mengakses Akane Console Tools ketikan perintah berikut pada console/ command prompt/ cmd, pastikan PHP CLI terinstall dengan benar.
 
 ```sh
 $ php console
