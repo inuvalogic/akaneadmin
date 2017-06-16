@@ -70,4 +70,4 @@ Feel free to contribute to this project
 
 visit our site here
 
-[www.webhade.id](www.webhade.id)
+[www.webhade.id](http://www.webhade.id)
