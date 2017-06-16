@@ -55,7 +55,14 @@ atau
 $ php console gen:sin namatable
 ```
 
-Menu pada sidebar akan otomatis
+### Some Magics
+1. otomatis membuat dropdown relasi dari table dan kolom tipe enum
+2. otomatis membuat datepicker untuk semua tipe kolom date/datetime
+3. otomatis membuat wysiwyg editor untuk kolom table dengan nama description, content, isi, deskripsi, page_content
+4. otomatis membuat upload handler untuk kolom table dengan nama picture, logo, filename
+5. auto time untuk kolom table dengan nama create_date, created_date, created_at, post_date, postdate, posted_at, update_date, updated_at, sent_time
+6. auto save function untuk INSERT dan EDIT dari variable POST, tanpa harus membuat query sql lagi
+7. kostumasi form hanya mensetting index array, mudah dipelajari, tanpa dokumentasi pun newbie/yg awam coding saja bisa mengerti
 
 ### Running on Live / Production Server
 

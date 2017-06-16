@@ -153,7 +153,7 @@ $web->admin();
 		$autotime_format = '$_POST[\'%s\'] = \'NOW()\';';
 
 		$autotime_column = array('create_date', 'created_date', 'created_at', 'post_date', 'postdate', 'posted_at', 'update_date', 'updated_at', 'sent_time');
-		$array_tinymce = array('description', 'description_in', 'description_en');
+		$array_tinymce = array('description', 'content', 'isi', 'deskripsi', 'page_content');
 
 		$not_empty_start = '';
 		$not_empty_end = '';
