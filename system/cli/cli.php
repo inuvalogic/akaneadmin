@@ -25,8 +25,8 @@ class Akane_CLI {
 		$command_head = "\033[1;33mAvailable commands:\033[0m\n\n";
 		
 		$command_list = "";
-		$command_list .= "\tgenerate:admin\t\tGenerate CRUD from current database configuration\n";
-		$command_list .= "\tgen:adm\t\t\tAlias of generate:admin command\n";
+		$command_list .= "\tgenerate:all\t\tGenerate CRUD from current database configuration\n";
+		$command_list .= "\tgen:all\t\t\tAlias of generate:admin command\n";
 		$command_list .= "\tgenerate:single [tablename]\t\tGenerate CRUD from single table\n";
 		$command_list .= "\tgen:sin [tablename]\t\t\tAlias of generate:single command\n";
 		$command_list .= "\n\t--help -h\t\t\tShow this help message\n";
@@ -44,7 +44,7 @@ class Akane_CLI {
     }
 
 	public function load_db_class() {
-		include "system/class/class.mysql.php";
+		include "system/class/class.mysqli.php";
 		$this->db = new Database($this->database_config['dbHost'], $this->database_config['dbUser'], $this->database_config['dbPass'], $this->database_config['dbname']); 
 		$this->db->connect();
 	}
@@ -188,19 +188,20 @@ class Akane_CLI {
 
     	}
     	
-    	// print_r($dbTables);
-    	// print_r($tables);
+    	$dont_generate = array('admin', 'config');
 
     	foreach ($tables as $key => $value) {
-    		echo "\n".$key."\n";
-    		echo "\tGenerating Model class ...";
-    		Akane_Generate::create_model($key, $value['primary_key'], $value['searchable_column']);
-    		echo "\tGenerating Admin class ...";
-    		Akane_Generate::create_admin($key, $value['columns'], $value['primary_key']);
+    		if (in_array($key, $dont_generate)==false){
+	    		echo "\n".$key."\n";
+	    		echo "\tGenerating Model class ...";
+	    		$this->generator->create_model($key, $value['primary_key'], $value['searchable_column']);
+	    		echo "\tGenerating Admin class ...";
+	    		$this->generator->create_admin($key, $value['columns'], $value['primary_key']);
+    		}
     	}
     	
     	echo "\nGenerating Admin menu ...";
-    	Akane_Generate::create_admin_menu($tables);
+    	$this->generator->create_admin_menu($tables);
 
 		$output .= "\n\n";
 
@@ -295,7 +296,7 @@ class Akane_CLI {
 	    			}
 	    		}
 	    		else{
-	    			continue 2;
+	    			continue;
 	    		}
 
 				if ($foreign_keys > 0){
@@ -353,5 +354,6 @@ class Akane_CLI {
 $cli = new Akane_CLI;
 
 function &get_instance() {
-	return Akane_CLI::get_instance();
+    $cli = new Akane_CLI;
+	return $cli->get_instance();
 }

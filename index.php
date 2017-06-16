@@ -1,11 +1,12 @@
 <?php
 
+date_default_timezone_set('Asia/Jakarta');
+
 define('_INC' ,1);
 
 include "system/define.php";
 
 if (SITE_ENV=='dev'){
-	error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
 	ini_set('display_errors',1);
 } else {
 	error_reporting(0);

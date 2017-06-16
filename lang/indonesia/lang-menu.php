@@ -16,7 +16,8 @@ $langmenu['LINK_LOGOUT'] = 'logout';
 
 $langmenu['MENU_ADD'] = 'Add';
 $langmenu['MENU_EDIT'] = 'Change';
-$langmenu['MENU_NAME'] = 'Nama';
+$langmenu['MENU_NAME'] = 'Name';
+$langmenu['MENU_SEND'] = 'Send';
 
 $langmenu['MENU_HOME'] = 'Dashboard';
 $langmenu['MENU_PASS'] = 'Change Password';
@@ -28,17 +29,8 @@ $langmenu['MENU_INFO_PREV'] = 'Previous';
 $langmenu['MENU_INFO_POSTBY'] = 'post by';
 $langmenu['MENU_INFO_PAGE'] = "page %s of %s";
 
-$langmenu['MENU_SEND_SMS'] = 'Send SMS';
-$langmenu['MENU_BULK_SMS'] = 'Bulk SMS';
-$langmenu['MENU_INBOX'] = 'Inbox';
-$langmenu['MENU_OUTBOX'] = 'Outbox';
-$langmenu['MENU_SENT_ITEM'] = 'Sent Items';
-$langmenu['MENU_FAILED'] = 'Sent Failed';
+$langmenu['UPLOAD_PIC_SIZE'] = 'Ukuran gambar minimal %s x %s pixel';
+$langmenu['UPLOAD_FILE_SIZE'] = 'Ukuran file maksimal %s';
 
-$langmenu['MENU_PEGAWAI'] = 'Data Pegawai';
-$langmenu['MENU_NIK'] = 'NIK';
-$langmenu['MENU_NO_ANGGOTA'] = 'No Anggota Koperasi';
-$langmenu['MENU_HANDPHONE'] = 'No Handphone';
-$langmenu['MENU_OPERATOR'] = 'Operator Seluler';
-
-?>
+$langmenu['POSITION_LABEL'] = 'Urutan Kemunculan';
+$langmenu['POSITION_HELP'] = 'Urutan kemunculan pada website, isi dengan angka, dan bukan 0 (nol)';

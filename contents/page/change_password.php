@@ -2,71 +2,69 @@
 if (!defined('_INC')) { die('404 Not Found'); }
 $web->admin();
 $web->set_heading(MENU_PASS);
+$web->breadcumbs->add('current','Setup');
+$web->breadcumbs->add('current','Change Password');
 
-	$id = $_SESSION['logid'];
+$id = $_SESSION['logid'];
+
+if ( (isset($_POST['ppost'])) && ($_POST['ppost']==MENU_EDIT) )
+{
+	$oldpass = $_POST["old_password"];
+	$oldpasswd = $web->encrypt_password($oldpass);
 	
-	if ($_POST['change']=="Change Password"){
-		$oldpass=$_POST["oldpass"];
-		$oldpasswd=md5($oldpass);
-		
-		$newpass1=$_POST["newpass1"];
-		$newpass2=$_POST["newpass2"];
+	$newpass1 = $_POST["new_password"];
+	$newpass2 = $_POST["new_password_retype"];
 
-		if (empty($oldpass)) {
-            echo "<div class='warning'>Sorry Old Password Form is Empty</div>";
+	if (empty($oldpass)) {
+        echo ERROR_OLD_PASS_EMPTY;
+	}
+	if (empty($newpass1) && empty($newpass2)) {
+		echo ERROR_NEW_PASS_EMPTY;
+	}
+	
+	if (!empty($oldpass) && !empty($newpass1) && !empty($newpass2))
+	{
+		load_model('admin');
+
+		$admin = $web->admin->single($id);
+		$admindata = $admin[0];
+		$pass = $admindata['password'];
+
+		$match = "";
+		$match2 = "";
+		if ($oldpasswd!==$pass) {
+			echo ERROR_OLD_PASS_WRONG;
+		} else {
+			$match="ok";
 		}
-		if (empty($newpass1) && empty($newpass2)) {
-			echo "<div class='warning'>Sorry New Password Form is Empty</div>";
+		if ($newpass1!==$newpass2) {
+			echo ERROR_NEW_PASS_NOT_MATCH;
+		} else {
+			$match2="ok";
 		}
-		
-		if (!empty($oldpass) && !empty($newpass1) && !empty($newpass2)) {
-			$queryedit="select password from admin where id=$id";
-			$resultedit=mysql_query($queryedit);
-			$dataedit=mysql_fetch_array($resultedit);
-			$pass=$dataedit['password'];
-			$match = "";
-			$match2 = "";
-			if ($oldpasswd!==$pass) {
-				echo "<div class='warning'>Wrong Old Password</div>";
+		if (($match==="ok") && ($match2==="ok")) {
+			unset($_POST['ppost']);
+			unset($_POST['old_password']);
+			unset($_POST['new_password']);
+			unset($_POST['new_password_retype']);
+						
+			$_POST['password'] = $web->encrypt_password($newpass1);
+			$_POST['action'] = 'update';
+			$_POST['table'] = 'admin';
+			$_POST['where'] = 'id='.$id;
+
+			if ($web->db->auto_save()) {
+				echo $web->success_message('Password Changed Successfully');
+				$web->gotopage(THISFILE, 2);
 			} else {
-				$match="ok";
-			}
-			if ($newpass1!==$newpass2) {
-				echo "<div class='warning'>New Password not Match</div>";
-			} else {
-				$match2="ok";
-			}
-			if (($match==="ok") && ($match2==="ok")) {
-				$newpass=md5($newpass1);
-				$queryupdate="update admin set password='$newpass' where id=$id";
-				$resultupdate=mysql_query($queryupdate);
-				if ($resultupdate) {
-					echo "<div class='success'>Password Changed Successfully</div>";
-				} else {
-					echo ERROR_DB;
-				}
+				echo ERROR_DB;
 			}
 		}
 	}
+}
 
-
-	?>
-	<form method="post" action="?content=<?php echo THISFILE; ?>">
-	<table width="65%" border="0" cellspacing="0" cellpadding="3">
-	  <tr>
-		<td>Old Password</td>
-		<td><input class="input-text" type="password" name="oldpass" /></td>
-	  </tr>
-	  <tr>
-		<td>New Password</td>
-		<td><input class="input-text" type="password" name="newpass1" /></td>
-	  </tr>
-	  <tr>
-		<td>New Password (again)</td>
-		<td><input class="input-text" type="password" name="newpass2" /></td>
-	  </tr>
-	  <tr>
-		<td colspan="2"><input class="input-button" type="submit" name="change" value="Change Password" /></td>
-	  </tr>
-	</table>
-	</form>
+$this->forms
+	->add('old_password', 'password', array('required' => true))
+	->add('new_password', 'password', array('required' => true))
+	->add('new_password_retype', 'password', array('required' => true))
+->renderForm(MENU_EDIT);

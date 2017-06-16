@@ -19,7 +19,12 @@ class Akane_Generate {
 		if (is_array($searchable_column)){
 			$sc = array();
 			foreach ($searchable_column as $field){
-				$sc[] = "'".$field."'";
+				if (is_array($field) && array_key_exists('Field', $field)==true){
+					$f = $field['Field'];
+				} else {
+					$f = $field;
+				}
+				$sc[] = "'".$f."'";
 			}
 			if (count($searchable_column) > 1){
 				$searchable_column_string = implode(',',$sc);
@@ -91,12 +96,28 @@ class %tabelname%
 	public function create_admin_menu($tables){
 
 		$admin_menu = '';
-		$format_menu = '<li><a href="<?php echo SITEURL; ?>?content=%s">%s</a></li>';
+		/*$format_menu = '<li><a href="<?php echo SITEURL; ?>?content=%s">%s</a></li>';*/
+		$format_menu = '
+	<li class="treeview">
+        <a href="#">
+            <i class="fa fa-briefcase"></i>
+            <span>%s</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="<?php echo SITEURL; ?>?content=%s&action=add"><i class="fa fa-plus"></i> Add</a></li>
+            <li><a href="<?php echo SITEURL; ?>?content=%s"><i class="fa fa-bars"></i> List</a></li>
+        </ul>
+    </li>';
+    	
+    	$dont_generate = array('admin', 'config');
 
 		foreach ($tables as $key => $value) {
-			$label = str_replace('_', ' ', $key);
-			$label = ucwords($label);
-			$admin_menu .= "\t\t\t".sprintf($format_menu, $key, $label)."\n";
+			if (in_array($key, $dont_generate)==false){
+				$label = str_replace('_', ' ', $key);
+				$label = ucwords($label);
+				$admin_menu .= "\t\t\t".sprintf($format_menu, $label, $key, $key)."\n";
+			}
 		}
 
 		$formatted_content = '<?php
@@ -118,16 +139,12 @@ if (!defined(\'_INC\')) { die(\'404 Not Found\'); }
 $web->admin();
 
 ?>
-	<li class="menu"><a href="javascript:void(0);">Master</a>
-		<ul>
-'.$admin_menu.'
-		</ul>
-	</li>
-';
+'.$admin_menu;
 
-		$model_path = 'contents/page/';
-		$this->writefile($model_path, 'admin_menu_master.php', $formatted_content);
+		$model_path = 'contents/section/';
+		$this->writefile($model_path, 'admin_menu.php', $formatted_content);
 	}
+
 	public function create_admin($tabelname, $columns, $primary_keys){
 		
 		// print_r($columns);
@@ -135,7 +152,8 @@ $web->admin();
 		$autotime = '';
 		$autotime_format = '$_POST[\'%s\'] = \'NOW()\';';
 
-		$autotime_column = array('create_date', 'created_date', 'created_at', 'post_date', 'postdate', 'posted_at', 'update_date', 'updated_at');
+		$autotime_column = array('create_date', 'created_date', 'created_at', 'post_date', 'postdate', 'posted_at', 'update_date', 'updated_at', 'sent_time');
+		$array_tinymce = array('description', 'description_in', 'description_en');
 
 		$not_empty_start = '';
 		$not_empty_end = '';
@@ -154,10 +172,125 @@ $web->admin();
 		$table_rows = '';
 		$table_row = array();
 		$table_row_format = '<td class="tabel-content"><?php echo $data[\'%s\']; ?></td>';
+		
+		$upload = '';
+		$upload_start = '';
+		$upload_end = '';
+		$upload_help = '';
+		$upload_edit_start = '';
+		$upload_edit_end = '';
+		$upload_edit_help = '';
+		$upload_help_script = array();
+		$upload_script = array();
+		$upload_script_edit = array();
 
+		$upload_column = array('picture', 'logo', 'filename');
+
+		$upload_help_script_format = "\n\t\t\t".'$help_{fieldname} = sprintf(UPLOAD_PIC_SIZE, $web->lang[\'{tablename}_{fieldname}_width\'], $web->lang[\'{tablename}_{fieldname}_height\']).\', \'.sprintf(UPLOAD_FILE_SIZE, $web->lang[\'max_upload_size_str\']);';
+		$upload_help_filename_script_format = "\n\t\t\t".'$help_{fieldname} = sprintf(UPLOAD_FILE_SIZE, $web->lang[\'max_upload_size_str\']);';
+		$upload_help_script_format_edit = "\n\t\t\t\t\t".'$help_{fieldname} = sprintf(UPLOAD_PIC_SIZE, $web->lang[\'{tablename}_{fieldname}_width\'], $web->lang[\'{tablename}_{fieldname}_height\']).\', \'.sprintf(UPLOAD_FILE_SIZE, $web->lang[\'max_upload_size_str\']);';
+		$upload_help_filename_script_format_edit = "\n\t\t\t\t\t".'$help_{fieldname} = sprintf(UPLOAD_FILE_SIZE, $web->lang[\'max_upload_size_str\']);';
+		
+		$upload_img_format = "\n\t\t\t\t\t".'$upload_{fieldname}_params = array(
+						\'filename\' => \'{fieldname}\',
+						\'mode\' => \'{tablename}\',
+						\'size\' => \'{tablename}_{fieldname}\',
+						\'edit\' => 0,
+						\'prefix\' => \'{tablename}\'
+					);
+					$upload_{fieldname} = $web->upload_img($upload_{fieldname}_params);
+					if ($upload_{fieldname}[\'status\']==1){
+						$_POST[\'{fieldname}\'] = $upload_{fieldname}[\'gfile\'];
+					}
+					if (isset($upload_{fieldname}[\'error\'])) {
+						echo $upload_{fieldname}[\'error\'];
+						$error_upload = 1;
+					}'."\n";
+		$upload_file_format = "\n\t\t\t\t\t".'$upload_{fieldname}_params = array(
+						\'filename\' => \'{fieldname}\',
+						\'path\' => \'{tablename}\',
+						\'edit\' => 0,
+						\'prefix\' => \'{tablename}\'
+					);
+					$upload_{fieldname} = $web->upload($upload_{fieldname}_params);
+					if ($upload_{fieldname}[\'status\']==1){
+						$_POST[\'{fieldname}\'] = $upload_{fieldname}[\'gfile\'];
+					}
+					if (isset($upload_{fieldname}[\'error\'])) {
+						echo $upload_{fieldname}[\'error\'];
+						$error_upload = 1;
+					}'."\n";
+		$upload_img_edit_format = "\n\t\t\t\t\t\t\t".'$upload_{fieldname}_params = array(
+								\'filename\' => \'{fieldname}\',
+								\'mode\' => \'{tablename}\',
+								\'size\' => \'{tablename}_{fieldname}\',
+								\'edit\' => 1,
+								\'prefix\' => \'{tablename}\'
+							);
+							$upload_{fieldname} = $web->upload_img($upload_{fieldname}_params);
+							if ($upload_{fieldname}[\'status\']==1){
+								${fieldname} = $rb[\'{fieldname}\'];
+								$pathpic = IMAGES_DIR.\'{tablename}/\';
+
+								if (!empty(${fieldname}) && file_exists($pathpic.${fieldname})){
+									unlink($pathpic.${fieldname});
+								}
+								$_POST[\'{fieldname}\'] = $upload_{fieldname}[\'gfile\'];
+							}
+							if (isset($upload_{fieldname}[\'error\'])) {
+								echo $upload_{fieldname}[\'error\'];
+								$error_upload = 1;
+							}'."\n";
+		$upload_file_edit_format = "\n\t\t\t\t\t\t\t".'$upload_{fieldname}_params = array(
+								\'filename\' => \'{fieldname}\',
+								\'path\' => \'{tablename}\',
+								\'edit\' => 1,
+								\'prefix\' => \'{tablename}\'
+							);
+							$upload_{fieldname} = $web->upload($upload_{fieldname}_params);
+							if ($upload_{fieldname}[\'status\']==1){
+								${fieldname} = $rb[\'{fieldname}\'];
+								$pathpic = ASSETS_DIR.\'{tablename}/\';
+
+								if (!empty(${fieldname}) && file_exists($pathpic.${fieldname})){
+									unlink($pathpic.${fieldname});
+								}
+								$_POST[\'{fieldname}\'] = $upload_{fieldname}[\'gfile\'];
+							}
+							if (isset($upload_{fieldname}[\'error\'])) {
+								echo $upload_{fieldname}[\'error\'];
+								$error_upload = 1;
+							}'."\n";
+
+		$delete_file = '';
+		$delete_script = array();
+
+		$delete_file_format = "\n\t\t\t\t\t".'${fieldname} = $rb[\'{fieldname}\'];
+					$path{fieldname} = {path}.\'{tablename}/\';
+					if (!empty(${fieldname}) && file_exists($path{fieldname}.${fieldname})){
+						unlink($path{fieldname}.${fieldname});
+					}'."\n";
+
+		$table_column = '';
+		$array_column = array();
+		$array_column_view = array();
 
 		foreach ($columns as $col_keys => $col) {
 			
+			if (in_array($col['name'], $upload_column)===true){
+				if ($col['name']=='filename'){
+					$array_column_view[] = "'".$col['name']."' => array('file' => '".$tabelname."')";
+				} else {
+					$array_column_view[] = "'".$col['name']."' => array('pic' => '".$tabelname."')";
+				}
+			} else if ($col['external']!=false){
+				$array_column_view[] = "'".$col['name']."' => array('relation' => '".$col['external']."')";
+				$array_column[] = "'".$col['name']."' => array('relation' => '".$col['external']."')";
+			} else {
+				$array_column_view[] = "'".$col['name']."'";
+				$array_column[] = "'".$col['name']."'";
+			}
+
 			if (!$col['primary']) {
 
 				$form_param = array();
@@ -171,6 +304,9 @@ $web->admin();
 
 				if ($col['type']=='text'){
 					$form_type = 'textarea';
+					if (in_array($col['name'],$array_tinymce)===true){
+						$form_param[] = '\'params\' => array(\'class\' => \'tinymce\')';
+					}
 				} else if ($col['type']=='enum'){
 					if (count($col['enum_data'])!=0){
 
@@ -180,7 +316,9 @@ $web->admin();
 
 						foreach ($col['enum_data'] as $enumkey => $enumvalue) {
 							$enumvalue_trim = trim($enumvalue, "'");
-							$enum_array[] = '\''.$enumvalue_trim.'\' => \''.$enumvalue_trim.'\'';
+							$enumvalue_trim_label = str_replace('_', ' ', $enumvalue_trim);
+							$enumvalue_trim_label = ucwords($enumvalue_trim_label);
+							$enum_array[] = '\''.$enumvalue_trim.'\' => \''.$enumvalue_trim_label.'\'';
 						}
 						
 						$enums = implode(', ', $enum_array);
@@ -193,6 +331,37 @@ $web->admin();
 						$autotime .= "\t\t\t\t\t".sprintf($autotime_format, $col['name'])."\n";
 						continue;
 					}
+				} else if (in_array($col['name'], $upload_column)===true){
+					$form_type = 'file';
+					$form_param[] = '\'help\' => $help_'.$col['name'];
+
+					if ($col['name']=='filename'){
+						$replace_upload = str_replace('{fieldname}', $col['name'], $upload_file_format);
+						$replace_upload_edit = str_replace('{fieldname}', $col['name'], $upload_file_edit_format);
+						$replace_upload_help = str_replace('{fieldname}', $col['name'], $upload_help_filename_script_format);
+						$replace_upload_help_edit = str_replace('{fieldname}', $col['name'], $upload_help_filename_script_format_edit);
+						$replace_delete = str_replace('{path}', 'ASSETS_DIR', $delete_file_format);
+					} else {
+						$replace_upload = str_replace('{fieldname}', $col['name'], $upload_img_format);
+						$replace_upload_edit = str_replace('{fieldname}', $col['name'], $upload_img_edit_format);
+						$replace_upload_help = str_replace('{fieldname}', $col['name'], $upload_help_script_format);
+						$replace_upload_help_edit = str_replace('{fieldname}', $col['name'], $upload_help_script_format_edit);
+						$replace_delete = str_replace('{path}', 'IMAGES_DIR', $delete_file_format);
+					}
+					
+					$replace_upload = str_replace('{tablename}', $tabelname, $replace_upload);
+					$replace_upload_edit = str_replace('{tablename}', $tabelname, $replace_upload_edit);
+					$replace_upload_help = str_replace('{tablename}', $tabelname, $replace_upload_help);
+					$replace_upload_help_edit = str_replace('{tablename}', $tabelname, $replace_upload_help_edit);
+					
+					$replace_delete = str_replace('{fieldname}', $col['name'], $replace_delete);
+					$replace_delete = str_replace('{tablename}', $tabelname, $replace_delete);
+
+					$upload_script[] = $replace_upload;
+					$upload_script_edit[] = $replace_upload_edit;
+					$upload_help_script[] = $replace_upload_help;
+					$upload_help_script_edit[] = $replace_upload_help_edit;
+					$delete_script[] = $replace_delete;
 				}
 
 				if (!$col['nullable']){
@@ -216,8 +385,17 @@ $web->admin();
 
 				$form_add .= "\t\t\t\t".'->add(\''.$col['name'].'\', \''.$form_type.'\''.$form_parameter.')'."\n";
 				
+				$form_param[] = '\'value\' => $rb[\''.$col['name'].'\']';
+				
+				if (in_array($col['name'], $upload_column)===true){
+					if ($col['name']=='filename'){
+						$form_param[] = '\'edit_file\' => array(\'mode\' => \''.$tabelname.'\', \'filename\' => $rb[\''.$col['name'].'\'])';
+					} else {
+						$form_param[] = '\'edit_pic\' => array(\'mode\' => \''.$tabelname.'\', \'filename\' => $rb[\''.$col['name'].'\'])';
+					}
+				}
+
 				if (count($form_param)!=0){
-					$form_param[] = '\'value\' => $rb[\''.$col['name'].'\']';
 					$form_params = implode(', ', $form_param);
 					$form_parameter = ', array('.$form_params.')';
 				}
@@ -241,6 +419,37 @@ $web->admin();
 			$table_rows = implode("\n", $table_row);
 		}
 
+		if (count($array_column)!=0){
+			$table_column = implode(",", $array_column);
+		}
+
+		if (count($array_column_view)!=0){
+			$table_column_view = implode(",", $array_column_view);
+		}
+		
+		if (count($upload_script)!=0){
+			$upload_start = "\t\t\t\t\t".'$error_upload = 0;';
+			$upload_start .= implode('',$upload_script);
+			$upload_start .= "\n\t\t\t\t\t".'if ($error_upload==0){';
+			$upload_end = "\t\t\t\t\t".'}';
+			$upload_help = implode('',$upload_help_script);
+		}
+
+		if (count($upload_script_edit)!=0){
+			$upload_edit_start = "\t\t\t\t\t\t\t".'$error_upload = 0;';
+			$upload_edit_start .= implode('',$upload_script_edit);
+			$upload_edit_start .= "\n\t\t\t\t\t\t\t".'if ($error_upload==0){';
+			$upload_edit_end = "\t\t\t\t\t\t\t".'}';
+			$upload_edit_help = implode('',$upload_help_script_edit);
+		}
+
+		if (count($delete_script)!=0){
+			$delete_file = implode('',$delete_script);
+		}
+
+		$tabeltitle = str_replace('_', ' ', $tabelname);
+		$tabeltitle = ucwords($tabeltitle);
+		
 		$formatted_content = '<?php
 /*
  *
@@ -256,6 +465,7 @@ $web->admin();
  */
 
 $web->admin();
+$web->set_heading(\''.$tabeltitle.'\');
 
 load_model(\'%tabelname%\');
 
@@ -268,7 +478,11 @@ if ( (isset($_GET[\'action\'])) && (!empty($_GET[\'action\'])) )
 	switch($action)
 	{
 		case \'add\':
+			$web->breadcumbs->add(\'?content='.$tabelname.'\',\''.$tabeltitle.'\');
+			$web->breadcumbs->add(\'current\',\'Add\');
+
 			echo BACKLINK;
+
 			if ( (isset($_POST[\'ppost\'])) && ($_POST[\'ppost\']==MENU_ADD) )
 			{
 				'.$not_empty_start.'
@@ -276,18 +490,26 @@ if ( (isset($_GET[\'action\'])) && (!empty($_GET[\'action\'])) )
 					$_POST[\'action\'] = \'insert\';
 					$_POST[\'table\'] = \'%tabelname%\';
 '.$autotime.'
+'.$upload_start.'
 					$web->db->auto_save();
 					$web->gotopage(THISFILE);
+'.$upload_end.'
 				'.$not_empty_end.'
 			}
+'.$upload_help.'
 
 			$this->forms
+			->form_header(\'Add '.$tabeltitle.'\')
 '.$form_add.'
 			->renderForm(MENU_ADD);
 
 		break;
 		case \'edit\':
+			$web->breadcumbs->add(\'?content='.$tabelname.'\',\''.$tabeltitle.'\');
+			$web->breadcumbs->add(\'current\',\'Change\');
+
 			echo BACKLINK;
+
 			if ( (isset($_GET[\'idb\'])) && (!empty($_GET[\'idb\'])) )
 			{
 				$idb = $_GET[\'idb\'];
@@ -304,12 +526,16 @@ if ( (isset($_GET[\'action\'])) && (!empty($_GET[\'action\'])) )
 							$_POST[\'action\'] = \'update\';
 							$_POST[\'table\'] = \'%tabelname%\';
 							$_POST[\'where\'] = \'%primary_keys%=\'.$rb[\'%primary_keys%\'];
+'.$upload_edit_start.'
 							$web->db->auto_save();
 							$web->gotopage(THISFILE);
+'.$upload_edit_end.'
 						'.$not_empty_end.'
 					}
+'.$upload_edit_help.'
 
 					$this->forms
+					->form_header(\'Change '.$tabeltitle.'\')
 '.$form_edit.'
 					->renderForm(MENU_EDIT);
 
@@ -329,6 +555,7 @@ if ( (isset($_GET[\'action\'])) && (!empty($_GET[\'action\'])) )
 				if ($cb!=0)
 				{
 					$rb = $data[0];
+'.$delete_file.'
 					$delete = $web->db->query_delete(\'%tabelname%\',array(\'%primary_keys%\' => $rb[\'%primary_keys%\']));
 					if ($delete){
 						$web->gotopage(THISFILE);
@@ -340,10 +567,33 @@ if ( (isset($_GET[\'action\'])) && (!empty($_GET[\'action\'])) )
 				echo ERROR_IDB_NULL;
 			}
 		break;
-		default:
-			$web->add_button();
-			$web->search_form();
+		case \'view\':
+			$web->breadcumbs->add(\'?content='.$tabelname.'\',\''.$tabeltitle.'\');
+			$web->breadcumbs->add(\'current\',\'View\');
 			
+			echo BACKLINK;
+
+			if ( (isset($_GET[\'idb\'])) && (!empty($_GET[\'idb\'])) )
+			{
+				$idb = $_GET[\'idb\'];
+				$data = $web->%tabelname%->single($idb);
+				$cb = count($data);
+				if ($cb!=0)
+				{
+					$rb = $data[0];
+					$thead = array('.$table_column_view.');
+					$web->forms->renderView($thead, $rb);
+				} else {
+					echo ERROR_IDB_NULL;
+				}
+			} else {
+				echo ERROR_IDB_NULL;
+			}			
+		break;
+		default:
+			$web->breadcumbs->add(\'current\',\''.$tabeltitle.'\');
+			$web->forms->topbar();
+
 			$keyword = \'\';
 			$searchlink = \'\';
 			if (isset($_GET[\'keyword\'])){
@@ -362,27 +612,8 @@ if ( (isset($_GET[\'action\'])) && (!empty($_GET[\'action\'])) )
             
 			if ($jmlrec>0)
 			{
-				$x = 0;
-				echo \'<table width="100%" cellpadding="3" cellspacing="0" border="0">
-				<tr>
-'.$table_heading.'
-					<td width="50" class="tabel-head2-end" align="center">Action</td>
-				</tr>\';
-				foreach($data as $data)
-				{
-					$color = ($x% 2  ? \'\' : \' class="diffcolor"\');
-					?>
-					<tr<?php echo $color; ?>>
-'.$table_rows.'
-						<td class="tabel-content-end" align="center">
-							<?php echo $web->action_button(\'edit\',THISFILE,$data[\'%primary_keys%\']); ?>
-							<?php echo $web->action_button(\'delete\',THISFILE,$data[\'%primary_keys%\'],\'this data\'); ?>
-						</td>
-					</tr>
-					<?php
-					$x++;
-				}
-				echo \'</table>\';
+				$thead = array('.$table_column.',\'action\' => array(\'view\',\'edit\',\'delete\'));
+				$web->forms->renderTable($thead, $data);
 				echo $paging[\'output\'];
 			} else {
 				echo ERROR_EMPTY;
@@ -390,7 +621,7 @@ if ( (isset($_GET[\'action\'])) && (!empty($_GET[\'action\'])) )
 			}
 		break;
 	}
-?>
+
 ';
 		$content = str_replace('%tabelname%', $tabelname, $formatted_content);
 		$content = str_replace('%primary_keys%', $primary_keys, $content);

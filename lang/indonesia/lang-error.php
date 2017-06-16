@@ -6,7 +6,7 @@ $error['ERROR_TMPL'] = 'File Template Tidak Ditemukan';
 $error['ERROR_DB'] = 'Mohon maaf telah terjadi kesalahan pada database kami';
 $error['ERROR_ADMIN_ONLY'] = 'Anda tidak memiliki hak untuk mengakses halaman ini';
 $error['ERROR_NO_WRITE'] = 'File tidak bisa ditulis';
-$error['ERROR_EMPTY'] = 'Belum Ada Data';
+$error['ERROR_EMPTY'] = 'No Data';
 $error['ERROR_NO_DELETE'] = 'File yang akan dihapus tidak ada';
 $error['ERROR_CANT_DELETE'] = 'File tidak bisa dihapus';
 $error['ERROR_FILE_REQ'] = 'Request File tidak sesuai';
@@ -38,8 +38,7 @@ $error['ERROR_TESTI_NULL'] = 'Belum ada Testimonial';
 // Upload
 //
 $error['ERROR_UPLOAD'] = 'Server Problem, Upload failed!';
-$error['ERROR_UPLOAD_WIDTH'] = 'Lebar gambar tidak sesuai';
-$error['ERROR_UPLOAD_HEIGHT'] = 'Tinggi gambar tidak sesuai';
+$error['ERROR_UPLOAD_PIC_SIZE'] = 'Ukuran gambar minimal %s x %s pixel';
 $error['ERROR_TYPE'] = 'Invalid File Type';
 $error['ERROR_SIZE'] = 'Maximum File size is %s';
 $error['ERROR_CHMOD'] = 'Cannot chmod file.';
@@ -54,13 +53,13 @@ $error['ERROR_NULL_CNT'] = 'Isi tidak boleh kosong';
 $error['ERROR_LINK_EXISTS_2'] = '<strong>Links</strong> sudah terpakai';
 $error['ERROR_POS_EXISTS'] = '<strong>Posisi</strong> sudah terpakai';
 
-// polling
+// change password
 //
-$error['ERROR_POLL_EMPTY'] = 'Belum ada Polling';
-$error['ERROR_POLL_CH_EMPTY'] = 'Pilihan tidak ada';
-$error['ERROR_POLL_ID_WRONG'] = 'ID Polling tidak sesuai';
-$error['ERROR_POLL_ID2_WRONG'] = 'ID Pilihan Polling tidak sesuai';
+$error['ERROR_OLD_PASS_EMPTY'] = 'Sorry Old Password Form is Empty';
+$error['ERROR_OLD_PASS_WRONG'] = 'Wrong Old Password';
+$error['ERROR_NEW_PASS_EMPTY'] = 'Sorry New Password Form is Empty';
+$error['ERROR_NEW_PASS_NOT_MATCH'] = 'New Password not Match';
 
-$error['ERROR_BRANCH_NULL'] = 'Pilihan cabang belum dipilih';
-
-?>
+// product & portfolio images
+$error['ERROR_PRODUCT_PIC'] = 'Tidak dapat menghapus Product/Service, Silahkan menghapus semua gambar terlebih dahulu.';
+$error['ERROR_PORTFOLIO_PIC'] = 'Tidak dapat menghapus Portfolio, Silahkan menghapus semua gambar terlebih dahulu.';

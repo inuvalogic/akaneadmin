@@ -249,8 +249,8 @@ function query_update($table, $data, $where='1') {
 	foreach($data as $key=>$val) {
 		if($key!="action" and $key!="table" and $key!="where" and $key!="password1" and $key!="password2" and $key!="blacklist" and $key!="blacklist1" and $key!="blacklist2" and $key!="var1" and $key!="var2" and $key!="spam"){
 			if($key=="password"){ $val = md5($val); }
-			if($val=='') $q .= "`$key` = '', ";
-			if(strtolower($val)=='null') $q.= "`$key` = NULL, ";
+			if($val===''){ $q .= "`$key` = '', "; }
+			if($val===NULL) $q.= "`$key` = NULL, ";
 			elseif(strtolower($val)=='now()') $q.= "`$key` = NOW(), ";
    	     	elseif(preg_match("/^increment\((\-?\d+)\)$/i",$val,$m)) $q.= "`$key` = `$key` + $m[1], "; 
 			else $q.= "`$key`='".$this->escape($val)."', ";
