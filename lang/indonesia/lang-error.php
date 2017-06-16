@@ -59,7 +59,3 @@ $error['ERROR_OLD_PASS_EMPTY'] = 'Sorry Old Password Form is Empty';
 $error['ERROR_OLD_PASS_WRONG'] = 'Wrong Old Password';
 $error['ERROR_NEW_PASS_EMPTY'] = 'Sorry New Password Form is Empty';
 $error['ERROR_NEW_PASS_NOT_MATCH'] = 'New Password not Match';
-
-// product & portfolio images
-$error['ERROR_PRODUCT_PIC'] = 'Tidak dapat menghapus Product/Service, Silahkan menghapus semua gambar terlebih dahulu.';
-$error['ERROR_PORTFOLIO_PIC'] = 'Tidak dapat menghapus Portfolio, Silahkan menghapus semua gambar terlebih dahulu.';
