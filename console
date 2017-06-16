@@ -10,7 +10,7 @@ define('_INC' ,1);
  */
 
 include "system/dbconfig.php";
-echo $dbname;
+
 $database_config = array
 (
 	'dbHost' => $dbHost,
