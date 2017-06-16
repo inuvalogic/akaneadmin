@@ -1,6 +1,6 @@
 <header class="header">
     <a href="<?php echo SITEURL; ?>" class="logo">
-        Control Panel
+        Akane Admin<sup>v1.1</sup>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" role="navigation">
@@ -36,3 +36,4 @@
         </section>
 
         <section class="content">
+            <div class="maincontent">

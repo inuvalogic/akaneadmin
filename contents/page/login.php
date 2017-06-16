@@ -55,7 +55,7 @@ if ( (isset($_POST["submit"])) ) {
 ?>
 <link href="css/signin.css" rel="stylesheet" type="text/css" />
 <div class="form-box" id="login-box">
-    <div class="header"><img src="images/logo.png"></div>
+    <div class="header">Akane Admin<sup>v1.1</sup></div>
     <form action="?content=login&action=login" method="post">
         <div class="body bg-gray">
             <?php echo $error['users']; ?>

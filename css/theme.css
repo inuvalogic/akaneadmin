@@ -1,5 +1,8 @@
-/*  Skin Tekno Asia
+/*  Skin Akane Admin
 ----------------------- */
+.maincontent {
+    min-height: 480px;
+}
 
 /* navbar */
 .skin-blue .navbar {
