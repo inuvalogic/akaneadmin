@@ -347,6 +347,7 @@ $web->admin();
 						$replace_upload_help = str_replace('{fieldname}', $col['name'], $upload_help_script_format);
 						$replace_upload_help_edit = str_replace('{fieldname}', $col['name'], $upload_help_script_format_edit);
 						$replace_delete = str_replace('{path}', 'IMAGES_DIR', $delete_file_format);
+						$form_param[] = '\'width\' => 100';
 					}
 					
 					$replace_upload = str_replace('{tablename}', $tabelname, $replace_upload);

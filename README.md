@@ -56,19 +56,32 @@ $ php console gen:sin namatable
 ```
 
 ### Some Magics
-1. otomatis membuat dropdown relasi dari table dan kolom tipe enum
-2. otomatis membuat datepicker untuk semua tipe kolom date/datetime
-3. otomatis membuat wysiwyg editor untuk kolom table dengan nama description, content, isi, deskripsi, page_content
-4. otomatis membuat upload handler untuk kolom table dengan nama picture, logo, filename
-5. auto time untuk kolom table dengan nama create_date, created_date, created_at, post_date, postdate, posted_at, update_date, updated_at, sent_time
-6. auto save function untuk INSERT dan EDIT dari variable POST, tanpa harus membuat query sql lagi
-7. kostumasi form hanya mensetting index array, mudah dipelajari, tanpa dokumentasi pun newbie/yg awam coding saja bisa mengerti
+1. otomatis membuat CRUD (tabel list, form tambah, form ubah, delete) untuk satu atau semua table dalam struktur database
+2. otomatis membuat menu baru di sidebar, yang bisa dimodifikasi kemudian
+3. otomatis membuat dropdown select form untuk relasi dari table dan juga untuk kolom bertipe `ENUM`
+4. otomatis membuat datepicker untuk semua tipe kolom `DATE\DATETIME`
+5. otomatis membuat wysiwyg editor untuk kolom table dengan nama description, content, isi, deskripsi, page_content
+6. otomatis membuat upload handler untuk kolom table dengan nama picture, logo, filename. Juga preview image dan link download file yang diupload sebelumnya pada form EDIT
+7. auto time untuk kolom table dengan nama create_date, created_date, created_at, post_date, postdate, posted_at, update_date, updated_at, sent_time
+8. auto save function untuk INSERT dan EDIT dari variable POST, tanpa harus membuat query sql lagi
+9. kostumasi form hanya mensetting index array, mudah dipelajari, tanpa dokumentasi pun newbie/yg awam coding saja bisa mengerti
 
 ### Running on Live / Production Server
 
 `WARNING! DO WITH YOUR OWN RISK!`
 
 Untuk saat ini, `Akane Admin` tidak disarankan untuk dipakai pada Live Server, karena masih pada tahap development dan tingkat keamanannya masih jauh dibawah standar operasional.
+
+### Preview
+
+![sc1](https://github.com/inuvalogic/akaneadmin/raw/master/preview/sc1.png "sc1")
+
+![sc2](https://github.com/inuvalogic/akaneadmin/raw/master/preview/sc1.png "sc2")
+
+![sc3](https://github.com/inuvalogic/akaneadmin/raw/master/preview/sc1.png "sc3")
+
+![sc4](https://github.com/inuvalogic/akaneadmin/raw/master/preview/sc1.png "sc4")
+
 ___
 
 ## Contribute
