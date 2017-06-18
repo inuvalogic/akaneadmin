@@ -76,11 +76,11 @@ Untuk saat ini, `Akane Admin` tidak disarankan untuk dipakai pada Live Server, k
 
 ![sc1](https://github.com/inuvalogic/akaneadmin/raw/master/preview/sc1.png "sc1")
 
-![sc2](https://github.com/inuvalogic/akaneadmin/raw/master/preview/sc1.png "sc2")
+![sc2](https://github.com/inuvalogic/akaneadmin/raw/master/preview/sc2.png "sc2")
 
-![sc3](https://github.com/inuvalogic/akaneadmin/raw/master/preview/sc1.png "sc3")
+![sc3](https://github.com/inuvalogic/akaneadmin/raw/master/preview/sc3.png "sc3")
 
-![sc4](https://github.com/inuvalogic/akaneadmin/raw/master/preview/sc1.png "sc4")
+![sc4](https://github.com/inuvalogic/akaneadmin/raw/master/preview/sc4.png "sc4")
 
 ___
 
